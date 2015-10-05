@@ -14,6 +14,8 @@
 		0681AE461BC32FFC00D4822D /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE451BC32FFC00D4822D /* Maze.swift */; settings = {ASSET_TAGS = (); }; };
 		0681AE491BC3303A00D4822D /* BruteForceSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE471BC3303A00D4822D /* BruteForceSolver.swift */; settings = {ASSET_TAGS = (); }; };
 		0681AE4A1BC3303A00D4822D /* BoxesSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE481BC3303A00D4822D /* BoxesSolver.swift */; settings = {ASSET_TAGS = (); }; };
+		0681AE511BC3336B00D4822D /* TileSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE501BC3336B00D4822D /* TileSet.swift */; settings = {ASSET_TAGS = (); }; };
+		0681AE531BC3339F00D4822D /* BasicTileRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE521BC3339F00D4822D /* BasicTileRenderer.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		0681AE451BC32FFC00D4822D /* Maze.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Maze.swift; sourceTree = "<group>"; };
 		0681AE471BC3303A00D4822D /* BruteForceSolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BruteForceSolver.swift; sourceTree = "<group>"; };
 		0681AE481BC3303A00D4822D /* BoxesSolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BoxesSolver.swift; sourceTree = "<group>"; };
+		0681AE501BC3336B00D4822D /* TileSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TileSet.swift; sourceTree = "<group>"; };
+		0681AE521BC3339F00D4822D /* BasicTileRenderer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicTileRenderer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +78,8 @@
 				0681AE451BC32FFC00D4822D /* Maze.swift */,
 				0681AE471BC3303A00D4822D /* BruteForceSolver.swift */,
 				0681AE481BC3303A00D4822D /* BoxesSolver.swift */,
+				0681AE501BC3336B00D4822D /* TileSet.swift */,
+				0681AE521BC3339F00D4822D /* BasicTileRenderer.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -158,7 +164,9 @@
 			files = (
 				0681AE441BC32F3700D4822D /* random.swift in Sources */,
 				0681AE3E1BC32F0000D4822D /* MazieSaverView.swift in Sources */,
+				0681AE511BC3336B00D4822D /* TileSet.swift in Sources */,
 				0681AE401BC32F2600D4822D /* CGRect+extension.swift in Sources */,
+				0681AE531BC3339F00D4822D /* BasicTileRenderer.swift in Sources */,
 				0681AE431BC32F3700D4822D /* shuffle.swift in Sources */,
 				0681AE4A1BC3303A00D4822D /* BoxesSolver.swift in Sources */,
 				0681AE461BC32FFC00D4822D /* Maze.swift in Sources */,
