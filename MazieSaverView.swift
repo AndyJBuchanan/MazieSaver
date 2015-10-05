@@ -68,6 +68,8 @@ class MazieSaverView : ScreenSaverView
 
     var renderer: BasicTileRenderer?
     
+    var tiledRender = true
+    
     private func DrawMaze( context: CGContextRef, rect: CGRect )
     {
         // Regenerate the maze if required
@@ -94,8 +96,14 @@ class MazieSaverView : ScreenSaverView
         }
         
         // Draw the Maze
-        
-// When I figure out why the tile renderer is fucked...
+        if ( tiledRender )
+        {
+            renderer?.RenderWithTilesets(context, rect: rect, maze: maze!, backgroundColour: backCol, wallColour: wallCol, cellColour: cellCol, solvedCellColour: solveCol, visitedCellColour: vistedCol, wallThickness: 0.2, overlay: true )
+        }
+        else
+        {
+            renderer?.RenderDirect(context, rect: rect, maze: maze!, backgroundColour: backCol, wallColour: wallCol, cellColour: cellCol, solvedCellColour: solveCol, visitedCellColour: vistedCol, wallThickness: 0.2, overlay: true )
+        }
     }
     
     private func DEBUG_ShowTiles( context: CGContextRef, rect: CGRect )
