@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0681AE341BC32ED600D4822D /* MazieSaverView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0681AE331BC32ED600D4822D /* MazieSaverView.h */; };
-		0681AE361BC32ED600D4822D /* MazieSaverView.m in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE351BC32ED600D4822D /* MazieSaverView.m */; };
+		0681AE3E1BC32F0000D4822D /* MazieSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE3D1BC32F0000D4822D /* MazieSaverView.swift */; settings = {ASSET_TAGS = (); }; };
+		0681AE401BC32F2600D4822D /* CGRect+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE3F1BC32F2600D4822D /* CGRect+extension.swift */; settings = {ASSET_TAGS = (); }; };
+		0681AE431BC32F3700D4822D /* shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE411BC32F3700D4822D /* shuffle.swift */; settings = {ASSET_TAGS = (); }; };
+		0681AE441BC32F3700D4822D /* random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE421BC32F3700D4822D /* random.swift */; settings = {ASSET_TAGS = (); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0681AE301BC32ED600D4822D /* MazieSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MazieSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
-		0681AE331BC32ED600D4822D /* MazieSaverView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MazieSaverView.h; sourceTree = "<group>"; };
-		0681AE351BC32ED600D4822D /* MazieSaverView.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MazieSaverView.m; sourceTree = "<group>"; };
 		0681AE371BC32ED600D4822D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0681AE3D1BC32F0000D4822D /* MazieSaverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazieSaverView.swift; sourceTree = "<group>"; };
+		0681AE3F1BC32F2600D4822D /* CGRect+extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+extension.swift"; sourceTree = "<group>"; };
+		0681AE411BC32F3700D4822D /* shuffle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = shuffle.swift; sourceTree = "<group>"; };
+		0681AE421BC32F3700D4822D /* random.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = random.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +36,10 @@
 		0681AE261BC32ED600D4822D = {
 			isa = PBXGroup;
 			children = (
+				0681AE3D1BC32F0000D4822D /* MazieSaverView.swift */,
+				0681AE3F1BC32F2600D4822D /* CGRect+extension.swift */,
+				0681AE411BC32F3700D4822D /* shuffle.swift */,
+				0681AE421BC32F3700D4822D /* random.swift */,
 				0681AE321BC32ED600D4822D /* MazieSaver */,
 				0681AE311BC32ED600D4822D /* Products */,
 			);
@@ -48,8 +56,6 @@
 		0681AE321BC32ED600D4822D /* MazieSaver */ = {
 			isa = PBXGroup;
 			children = (
-				0681AE331BC32ED600D4822D /* MazieSaverView.h */,
-				0681AE351BC32ED600D4822D /* MazieSaverView.m */,
 				0681AE371BC32ED600D4822D /* Info.plist */,
 			);
 			path = MazieSaver;
@@ -62,7 +68,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0681AE341BC32ED600D4822D /* MazieSaverView.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +98,7 @@
 		0681AE271BC32ED600D4822D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Andy Buchanan";
 				TargetAttributes = {
@@ -133,7 +139,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0681AE361BC32ED600D4822D /* MazieSaverView.m in Sources */,
+				0681AE441BC32F3700D4822D /* random.swift in Sources */,
+				0681AE3E1BC32F0000D4822D /* MazieSaverView.swift in Sources */,
+				0681AE401BC32F2600D4822D /* CGRect+extension.swift in Sources */,
+				0681AE431BC32F3700D4822D /* shuffle.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -220,11 +229,15 @@
 		0681AE3B1BC32ED600D4822D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MazieSaver/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = globbits.co.uk.MazieSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Debug;
@@ -232,11 +245,15 @@
 		0681AE3C1BC32ED600D4822D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MazieSaver/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = globbits.co.uk.MazieSaver;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				WRAPPER_EXTENSION = saver;
 			};
 			name = Release;
