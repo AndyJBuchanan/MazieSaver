@@ -30,6 +30,67 @@ class MazieSaverView : ScreenSaverView
     {
         let context: CGContextRef = NSGraphicsContext.currentContext()!.CGContext
         
+        DEBUG_ShowSomething(context, rect: rect)
+        
+        DrawMaze(context, rect: rect)
+    }
+    
+    override func animateOneFrame()
+    {
+        newMaze()
+        needsDisplay = true
+    }
+    
+    func newMaze()
+    {
+        // Force regeneration of maze
+        maze = nil
+        needsDisplay = true;
+    }
+
+    var maze: Maze?
+    var lastMazeRect = CGRect.zero
+
+    let backCol = CGColorCreateGenericRGB(0.0, 0.0, 0.0, 1.0)
+    var cellCol = CGColorCreateGenericRGB( 1.0, 1.0, 0.0, CGFloat(1.0) )
+    var wallCol = CGColorCreateGenericRGB( 0.0, 0.0, 1.0, CGFloat(1.0) )
+    var solveCol = CGColorCreateGenericRGB( 1.0, 0.0, 1.0, CGFloat(1.0) )
+    var vistedCol = CGColorCreateGenericRGB( 0.45, 0.0, 0.25, CGFloat(1.0) )
+    
+    var wallThickness:CGFloat = 0.2
+
+    private func DrawMaze( context: CGContextRef, rect: CGRect )
+    {
+        // Regenerate the maze if required
+        if ( maze == nil ) || ( lastMazeRect != rect )
+        {
+            maze = Maze()
+            
+            let rdim = floor( CGFloat.random( min: 6.0, max: min(rect.width/20.0,10.0) ) )
+            let xdim = Int( floor( rect.width / rdim ) )
+            let ydim = Int( floor( rect.height / rdim ) )
+            
+            maze?.generateMaze(w: xdim, h: ydim)
+            maze?.BruteForceSolve2()
+            //maze?.BoxSolve()
+            //maze?.printMazeToTTY()
+            
+            // Some random colours too!
+            cellCol = CGColor.randomColourOpaque()
+            wallCol = CGColor.randomColourOpaque()
+            solveCol = CGColor.randomColourOpaque()
+            vistedCol = CGColor.randomColourOpaque()
+            
+            wallThickness = CGFloat.random(min: 0.05, max: 0.3)
+        }
+        
+        // Draw the Maze
+        
+// When I figure out why the tile renderer is fucked...
+    }
+    
+    private func DEBUG_ShowSomething( context: CGContextRef, rect: CGRect )
+    {
         let randCol = CGColor.randomColourOpaque()
         
         CGContextSetBlendMode(context, CGBlendMode.Normal)
@@ -50,10 +111,4 @@ class MazieSaverView : ScreenSaverView
             CGContextFillRect(context, CGRect(x: nx, y: ny, width: cellwide, height: cellwide) )
         }
     }
-    
-    override func animateOneFrame()
-    {
-        needsDisplay = true
-    }
-    
 }
