@@ -31,6 +31,13 @@ class MazieSaverView : ScreenSaverView
         let context: CGContextRef = NSGraphicsContext.currentContext()!.CGContext
         
         DEBUG_ShowSomething(context, rect: rect)
+
+        if ( renderer==nil )
+        {
+            renderer = BasicTileRenderer()
+        }
+        
+        DEBUG_ShowTiles(context, rect: rect)
         
         DrawMaze(context, rect: rect)
     }
@@ -59,6 +66,8 @@ class MazieSaverView : ScreenSaverView
     
     var wallThickness:CGFloat = 0.2
 
+    var renderer: BasicTileRenderer?
+    
     private func DrawMaze( context: CGContextRef, rect: CGRect )
     {
         // Regenerate the maze if required
@@ -89,6 +98,24 @@ class MazieSaverView : ScreenSaverView
 // When I figure out why the tile renderer is fucked...
     }
     
+    private func DEBUG_ShowTiles( context: CGContextRef, rect: CGRect )
+    {
+        let cellCol = CGColorCreateGenericRGB( 1.0, 1.0, 0.0, CGFloat(1.0) )
+        let wallCol = CGColorCreateGenericRGB( 0.0, 0.0, 1.0, CGFloat(1.0) )
+        
+        let nwide = rect.width / 8
+        let nhigh = rect.height / 2
+        let cellwide = min(nwide, nhigh) * 0.9
+        let wallWide = cellwide / 5
+        for n in 0...15
+        {
+            let nx = CGFloat( n % 8 ) * nwide
+            let ny = CGFloat( n / 8 ) * nhigh
+            
+            renderer?.renderTileToContext( context, rect:CGRect(x: nx, y: ny, width: cellwide, height: cellwide), tileID: n, wallWidth: wallWide, backColour: CGColorGetConstantColor(kCGColorBlack)!, cellColour:cellCol, wallColour:wallCol )
+        }
+    }
+
     private func DEBUG_ShowSomething( context: CGContextRef, rect: CGRect )
     {
         let randCol = CGColor.randomColourOpaque()
