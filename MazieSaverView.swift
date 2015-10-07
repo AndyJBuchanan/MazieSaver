@@ -77,7 +77,7 @@ class MazieSaverView : ScreenSaverView
         {
             maze = Maze()
             
-            let rdim = floor( CGFloat.random( min: 6.0, max: min(rect.width/20.0,10.0) ) )
+            let rdim = floor( CGFloat.random( min: 3.0, max: min(rect.width/20.0,8.0) ) ) 
             let xdim = Int( floor( rect.width / rdim ) )
             let ydim = Int( floor( rect.height / rdim ) )
             
