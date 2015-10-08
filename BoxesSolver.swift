@@ -13,16 +13,13 @@ extension Maze
     final func BoxSolve() -> Bool
     {
         // Count initial connections
-        solution = []
         solution.reserveCapacity( gridH )
-        for y in 0..<gridH
+        for _ in 0..<gridH
         {
-            solution.append( [Int]() )
-            for x in 0..<gridW
-            {
-                solution[y].append( grid[y][x].count )
-            }
+            solution.append( Array<Int>(count: gridW, repeatedValue: 2) )
         }
+
+        var gridCopy = grid
         
         var deletedSquares = 1
         var passCount = 0
@@ -34,16 +31,17 @@ extension Maze
             {
                 for x in 0..<gridW
                 {
-                    if solution[y][x] == 1
+                    let c = gridCopy[y][x]
+                    
+                    if c.count == 1
                     {
                         solution[y][x] = 0
+                        gridCopy[y][x] = Cell.zero
 
-                        var c = grid[y][x]
-                        
-                        if ( x>0 ) && (c.left) { solution[y][x-1]-- }
-                        if ( x<gridW-1 ) && (c.right){ solution[y][x+1]-- }
-                        if ( y>0 ) && (c.top){ solution[y-1][x]-- }
-                        if ( y<gridH-1 ) && (c.bottom){ solution[y+1][x]-- }
+                        if ( x>0 )      { gridCopy[y][x-1].right=false }
+                        if ( x<gridW-1 ){ gridCopy[y][x+1].left=false }
+                        if ( y>0 )      { gridCopy[y-1][x].bottom=false }
+                        if ( y<gridH-1 ){ gridCopy[y+1][x].top=false }
                         
                         ++deletedSquares
                     }
@@ -54,17 +52,6 @@ extension Maze
         }
 
         print("Boxes Solve took \(passCount) passes")
-        
-        for y in 0..<gridH
-        {
-            for x in 0..<gridW
-            {
-                if ( solution[y][x] != 0 )
-                {
-                    solution[y][x] = 2
-                }
-            }
-        }
         
         return true
     }
