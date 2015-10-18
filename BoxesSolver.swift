@@ -6,8 +6,6 @@
 //  Copyright © 2015 Andy Buchanan. All rights reserved.
 //
 
-import Cocoa
-
 extension Maze
 {
     final func BoxSolve() -> Bool
@@ -58,5 +56,10 @@ extension Maze
 }
 
 // No refine step yet, no point whilst the core performance is still so bad
+
+// refactor, for sliced execution, these should not be extensions?
+
+
+
 
 

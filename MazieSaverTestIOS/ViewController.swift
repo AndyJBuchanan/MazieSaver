@@ -1,15 +1,14 @@
 //
 //  ViewController.swift
-//  MazieSaverTest
+//  MazieSaverTestIOS
 //
-//  Created by Andy Buchanan on 05/10/2015.
+//  Created by Andy Buchanan on 17/10/2015.
 //  Copyright © 2015 Andy Buchanan. All rights reserved.
 //
 
-import Cocoa
-import ScreenSaver
+import UIKit
 
-class ViewController: NSViewController
+class ViewController: UIViewController
 {
     var animationTimer: NSTimer?
     
@@ -19,15 +18,11 @@ class ViewController: NSViewController
         self.startAnimation()
     }
 
-    override var representedObject: AnyObject?
+    override func didReceiveMemoryWarning()
     {
-        didSet
-        {
-            // Update the view, if already loaded.
-            self.startAnimation()
-        }
+        super.didReceiveMemoryWarning()
     }
-
+    
     func startAnimation()
     {
         if ( self.animationTimer != nil )
@@ -46,6 +41,5 @@ class ViewController: NSViewController
         self.animationTimer?.invalidate();
         self.animationTimer = nil;
     }
-
 }
 

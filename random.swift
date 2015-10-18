@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import CoreGraphics
 
 extension Int
 {
@@ -56,12 +57,24 @@ extension Float
     }
 }
 
+#if os(iOS)
+import UIKit
 extension CGColor
 {
     static func randomColourOpaque() -> CGColor
     {
-        let col = CGColorCreateGenericRGB(CGFloat.random(), CGFloat.random(), CGFloat.random(), 1.0 )
-        return col
+        let col = UIColor( red: CGFloat.random(), green: CGFloat.random(), blue: CGFloat.random(), alpha: 1.0 )
+        return col.CGColor
     }
 }
+#else
+    extension CGColor
+    {
+        static func randomColourOpaque() -> CGColor
+        {
+            let col = CGColorCreateGenericRGB(CGFloat.random(), CGFloat.random(), CGFloat.random(), 1.0 )
+            return col
+        }
+    }
+#endif
 

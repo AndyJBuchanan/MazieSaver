@@ -6,7 +6,11 @@
 //  Copyright © 2015 Andy Buchanan. All rights reserved.
 //
 
-import Cocoa
+#if os(iOS)
+    import UIKit
+#else
+    import Cocoa
+#endif
 
 protocol TileRenderer
 {
@@ -27,7 +31,8 @@ class TileSet
 
         // todo: actually use the render size & do a nice filtered downscale. We're just drawing direct to final size at moment..
         
-        let colourSpace = CGColorSpaceCreateWithName( kCGColorSpaceGenericRGBLinear )
+        //let colourSpace = CGColorSpaceCreateWithName( kCGColorSpaceGenericRGBLinear )
+        let colourSpace = CGColorSpaceCreateDeviceRGB()
         
         guard let tileContext = CGBitmapContextCreate(UnsafeMutablePointer<Void>(), finalWidth, finalHeight, 8, 0, colourSpace, CGImageAlphaInfo.PremultipliedLast.rawValue )
         else

@@ -14,6 +14,11 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
+		<key>MazieSaverTestIOS.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
@@ -23,6 +28,11 @@
 			<true/>
 		</dict>
 		<key>0681AE691BC3385C00D4822D</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>06F293361BD30629007AD7CF</key>
 		<dict>
 			<key>primary</key>
 			<true/>

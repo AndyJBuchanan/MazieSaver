@@ -6,7 +6,7 @@
 //  Copyright © 2015 Andy Buchanan. All rights reserved.
 //
 
-import Cocoa
+import CoreGraphics
 
 extension CGRect
 {

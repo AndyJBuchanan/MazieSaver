@@ -6,7 +6,7 @@
 //  Copyright © 2015 Andy Buchanan. All rights reserved.
 //
 
-import Cocoa
+import CoreGraphics
 
 class BasicTileRenderer : TileRenderer
 {
@@ -95,15 +95,19 @@ class BasicTileRenderer : TileRenderer
     // Local
     var dirty = true
     
-    var backgroundColour = CGColorGetConstantColor(kCGColorWhite)! { didSet { dirty = true } }
+    let white_col = CGColor.from_rgb(1.0, 1.0, 1.0, 1.0)
+    let black_col = CGColor.from_rgb(0.0, 0.0, 0.0, 1.0)
+    let clear_col = CGColor.from_rgb(0.0, 0.0, 0.0, 0.0)
     
-    var wallColour = CGColorGetConstantColor(kCGColorBlack)! { didSet { dirty = true } }
-    var cellColour = CGColorGetConstantColor(kCGColorWhite)! { didSet { dirty = true } }
+    var backgroundColour: CGColor { didSet { dirty = true } }
     
-    var solutionColour = CGColorGetConstantColor(kCGColorBlack)! { didSet { dirty = true } }
-    var visitiedColour = CGColorGetConstantColor(kCGColorWhite)! { didSet { dirty = true } }
+    var wallColour: CGColor { didSet { dirty = true } }
+    var cellColour: CGColor { didSet { dirty = true } }
     
-    var orphanedColour = CGColorGetConstantColor(kCGColorBlack)! { didSet { dirty = true } }
+    var solutionColour: CGColor { didSet { dirty = true } }
+    var visitiedColour: CGColor { didSet { dirty = true } }
+    
+    var orphanedColour: CGColor { didSet { dirty = true } }
 
     var tileSize: CGSize?
     var tileWallWidth: CGFloat = 0.0
@@ -113,6 +117,16 @@ class BasicTileRenderer : TileRenderer
     var tilesSolution : TileSet?
     var tilesVisitedOverlay : TileSet?
     var tilesSolutionOverlay : TileSet?
+    
+    init()
+    {
+         backgroundColour = white_col
+         wallColour = black_col
+         cellColour = white_col
+         solutionColour = black_col
+         visitiedColour = white_col
+         orphanedColour = black_col
+    }
     
     func buildTilesets( width width: Int, height: Int, wallWidth: Int )
     {
@@ -136,7 +150,7 @@ class BasicTileRenderer : TileRenderer
             tilesSolution = TileSet()
             tilesSolution?.buildTilesWith(self, finalWidth: width, finalHeight: height, renderedWidth: 128, renderedHeight: 128, wallWidth: CGFloat(wallWidth), backColour: backgroundColour, cellColour: solutionColour, wallColour: wallColour)
 
-            let clearColour = CGColorCreateGenericRGB(0.0, 0.0, 0.0, 0.0)
+            let clearColour = clear_col
             
             tilesVisitedOverlay = TileSet()
             tilesVisitedOverlay?.buildTilesWith(self, finalWidth: width, finalHeight: height, renderedWidth: 128, renderedHeight: 128, wallWidth: CGFloat(wallWidth), backColour: clearColour, cellColour: visitiedColour, wallColour: clearColour)
@@ -164,8 +178,6 @@ class BasicTileRenderer : TileRenderer
         
         let wallWidth = max( 1.0, floor( wallThickness * cdim ) )
 
-        var backgroundColour = CGColorGetConstantColor(kCGColorWhite)! { didSet { dirty = true } }
-        
         self.wallColour = wallColour   // todo: property needs to set dirty only if the value is different
         self.cellColour = cellColour
         self.solutionColour = solvedCellColour ?? cellColour
@@ -255,7 +267,7 @@ class BasicTileRenderer : TileRenderer
         let useSolvedColour = solvedCellColour ?? cellColour
         let useVisitedColour = visitedCellColour ?? cellColour
         
-        let clearColour = CGColorCreateGenericRGB(0.0, 0.0, 0.0, 0.0)
+        let clearColour = CGColor.from_rgb(0.0, 0.0, 0.0, 0.0)
 
         for y in 0..<maze.gridH
         {
