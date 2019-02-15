@@ -7,28 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0681AE3E1BC32F0000D4822D /* MazieSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE3D1BC32F0000D4822D /* MazieSaverView.swift */; settings = {ASSET_TAGS = (); }; };
-		0681AE401BC32F2600D4822D /* CGRect+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE3F1BC32F2600D4822D /* CGRect+extension.swift */; settings = {ASSET_TAGS = (); }; };
-		0681AE431BC32F3700D4822D /* shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE411BC32F3700D4822D /* shuffle.swift */; settings = {ASSET_TAGS = (); }; };
-		0681AE441BC32F3700D4822D /* random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE421BC32F3700D4822D /* random.swift */; settings = {ASSET_TAGS = (); }; };
-		0681AE461BC32FFC00D4822D /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE451BC32FFC00D4822D /* Maze.swift */; settings = {ASSET_TAGS = (); }; };
-		0681AE491BC3303A00D4822D /* BruteForceSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE471BC3303A00D4822D /* BruteForceSolver.swift */; settings = {ASSET_TAGS = (); }; };
-		0681AE4A1BC3303A00D4822D /* BoxesSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE481BC3303A00D4822D /* BoxesSolver.swift */; settings = {ASSET_TAGS = (); }; };
-		0681AE511BC3336B00D4822D /* TileSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE501BC3336B00D4822D /* TileSet.swift */; settings = {ASSET_TAGS = (); }; };
-		0681AE531BC3339F00D4822D /* BasicTileRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE521BC3339F00D4822D /* BasicTileRenderer.swift */; settings = {ASSET_TAGS = (); }; };
+		0681AE3E1BC32F0000D4822D /* MazieSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE3D1BC32F0000D4822D /* MazieSaverView.swift */; };
+		0681AE401BC32F2600D4822D /* CGRect+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE3F1BC32F2600D4822D /* CGRect+extension.swift */; };
+		0681AE431BC32F3700D4822D /* shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE411BC32F3700D4822D /* shuffle.swift */; };
+		0681AE441BC32F3700D4822D /* random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE421BC32F3700D4822D /* random.swift */; };
+		0681AE461BC32FFC00D4822D /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE451BC32FFC00D4822D /* Maze.swift */; };
+		0681AE491BC3303A00D4822D /* BruteForceSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE471BC3303A00D4822D /* BruteForceSolver.swift */; };
+		0681AE4A1BC3303A00D4822D /* BoxesSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE481BC3303A00D4822D /* BoxesSolver.swift */; };
+		0681AE511BC3336B00D4822D /* TileSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE501BC3336B00D4822D /* TileSet.swift */; };
+		0681AE531BC3339F00D4822D /* BasicTileRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE521BC3339F00D4822D /* BasicTileRenderer.swift */; };
 		0681AE6D1BC3385C00D4822D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE6C1BC3385C00D4822D /* AppDelegate.swift */; };
 		0681AE6F1BC3385C00D4822D /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE6E1BC3385C00D4822D /* ViewController.swift */; };
 		0681AE711BC3385C00D4822D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0681AE701BC3385C00D4822D /* Assets.xcassets */; };
 		0681AE741BC3385C00D4822D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0681AE721BC3385C00D4822D /* Main.storyboard */; };
-		0681AE791BC3388D00D4822D /* MazieSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE3D1BC32F0000D4822D /* MazieSaverView.swift */; settings = {ASSET_TAGS = (); }; };
-		0681AE7A1BC3388D00D4822D /* CGRect+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE3F1BC32F2600D4822D /* CGRect+extension.swift */; settings = {ASSET_TAGS = (); }; };
-		0681AE7B1BC3388D00D4822D /* shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE411BC32F3700D4822D /* shuffle.swift */; settings = {ASSET_TAGS = (); }; };
-		0681AE7C1BC3388D00D4822D /* random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE421BC32F3700D4822D /* random.swift */; settings = {ASSET_TAGS = (); }; };
-		0681AE7D1BC3388D00D4822D /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE451BC32FFC00D4822D /* Maze.swift */; settings = {ASSET_TAGS = (); }; };
-		0681AE7E1BC3388D00D4822D /* BruteForceSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE471BC3303A00D4822D /* BruteForceSolver.swift */; settings = {ASSET_TAGS = (); }; };
-		0681AE7F1BC3388D00D4822D /* BoxesSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE481BC3303A00D4822D /* BoxesSolver.swift */; settings = {ASSET_TAGS = (); }; };
-		0681AE801BC3388D00D4822D /* TileSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE501BC3336B00D4822D /* TileSet.swift */; settings = {ASSET_TAGS = (); }; };
-		0681AE811BC3388D00D4822D /* BasicTileRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE521BC3339F00D4822D /* BasicTileRenderer.swift */; settings = {ASSET_TAGS = (); }; };
+		0681AE791BC3388D00D4822D /* MazieSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE3D1BC32F0000D4822D /* MazieSaverView.swift */; };
+		0681AE7A1BC3388D00D4822D /* CGRect+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE3F1BC32F2600D4822D /* CGRect+extension.swift */; };
+		0681AE7B1BC3388D00D4822D /* shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE411BC32F3700D4822D /* shuffle.swift */; };
+		0681AE7C1BC3388D00D4822D /* random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE421BC32F3700D4822D /* random.swift */; };
+		0681AE7D1BC3388D00D4822D /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE451BC32FFC00D4822D /* Maze.swift */; };
+		0681AE7E1BC3388D00D4822D /* BruteForceSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE471BC3303A00D4822D /* BruteForceSolver.swift */; };
+		0681AE7F1BC3388D00D4822D /* BoxesSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE481BC3303A00D4822D /* BoxesSolver.swift */; };
+		0681AE801BC3388D00D4822D /* TileSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE501BC3336B00D4822D /* TileSet.swift */; };
+		0681AE811BC3388D00D4822D /* BasicTileRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE521BC3339F00D4822D /* BasicTileRenderer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -179,7 +179,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0700;
-				LastUpgradeCheck = 0700;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = "Andy Buchanan";
 				TargetAttributes = {
 					0681AE2F1BC32ED600D4822D = {
@@ -187,6 +187,7 @@
 					};
 					0681AE691BC3385C00D4822D = {
 						CreatedOnToolsVersion = 7.0.1;
+						LastSwiftMigration = 1010;
 					};
 				};
 			};
@@ -290,8 +291,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -332,8 +335,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
@@ -357,9 +362,9 @@
 		0681AE3B1BC32ED600D4822D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MazieSaver/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -373,9 +378,9 @@
 		0681AE3C1BC32ED600D4822D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MazieSaver/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -389,30 +394,34 @@
 		0681AE761BC3385C00D4822D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MazieSaverTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = globbits.co.uk.MazieSaverTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
 		0681AE771BC3385C00D4822D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "-";
 				COMBINE_HIDPI_IMAGES = YES;
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = YES;
 				INFOPLIST_FILE = MazieSaverTest/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = globbits.co.uk.MazieSaverTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Release;
 		};
@@ -444,6 +453,7 @@
 				0681AE771BC3385C00D4822D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

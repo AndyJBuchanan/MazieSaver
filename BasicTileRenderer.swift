@@ -11,14 +11,14 @@ import Cocoa
 class BasicTileRenderer : TileRenderer
 {
     // TileRenderer
-    func renderTileToContext( context:CGContextRef, rect:CGRect, tileID: Int, wallWidth: CGFloat, backColour: CGColorRef, cellColour:CGColorRef, wallColour:CGColorRef ) -> Void
+    func renderTileToContext( _ context:CGContext, rect:CGRect, tileID: Int, wallWidth: CGFloat, backColour: CGColor, cellColour:CGColor, wallColour:CGColor ) -> Void
     {
-        CGContextSetBlendMode(context, CGBlendMode.Clear)   // Force to clear (is there a better option for this?)
-        CGContextFillRect(context, rect)
+        context.setBlendMode(CGBlendMode.clear)   // Force to clear (is there a better option for this?)
+        context.fill(rect)
 
-        CGContextSetBlendMode(context, CGBlendMode.Normal)
-        CGContextSetFillColorWithColor(context, backColour )
-        CGContextSetAlpha(context, 1.0)
+        context.setBlendMode(CGBlendMode.normal)
+        context.setFillColor(backColour )
+        context.setAlpha(1.0)
 
         let cell = Cell.fromID(tileID)
         
@@ -27,83 +27,83 @@ class BasicTileRenderer : TileRenderer
         let x0=floor(x), x1=floor(x+wallWidth), x2=floor(x+w-wallWidth), x3=floor(x+w)
         let y0=floor(y), y1=floor(y+wallWidth), y2=floor(y+h-wallWidth), y3=floor(y+h)
 
-        CGContextSetFillColorWithColor(context, cellColour )
-        CGContextSetAlpha(context, 1.0)
-        CGContextFillRect(context, CGRect(x: x1, y: y1, width: x2-x1, height: y2-y1))
+        context.setFillColor(cellColour )
+        context.setAlpha(1.0)
+        context.fill(CGRect(x: x1, y: y1, width: x2-x1, height: y2-y1))
 
         if cell.left
         {
-            CGContextSetFillColorWithColor(context, wallColour )
-            CGContextFillRect(context, CGRect(x: x0, y: y0, width: x1-x0, height: y1-y0))
-            CGContextFillRect(context, CGRect(x: x0, y: y2, width: x1-x0, height: y3-y2))
+            context.setFillColor(wallColour )
+            context.fill(CGRect(x: x0, y: y0, width: x1-x0, height: y1-y0))
+            context.fill(CGRect(x: x0, y: y2, width: x1-x0, height: y3-y2))
 
-            CGContextSetFillColorWithColor(context, cellColour )
-            CGContextFillRect(context, CGRect(x: x0, y: y1, width: x1-x0, height: y2-y1))
+            context.setFillColor(cellColour )
+            context.fill(CGRect(x: x0, y: y1, width: x1-x0, height: y2-y1))
         }
         else
         {
-            CGContextSetFillColorWithColor(context, wallColour )
-            CGContextFillRect(context, CGRect(x: x0, y: y0, width: x1-x0, height: y3-y0))
+            context.setFillColor(wallColour )
+            context.fill(CGRect(x: x0, y: y0, width: x1-x0, height: y3-y0))
         }
         
         if cell.right
         {
-            CGContextSetFillColorWithColor(context, wallColour )
-            CGContextFillRect(context, CGRect(x: x2, y: y0, width: x3-x2, height: y1-y0))
-            CGContextFillRect(context, CGRect(x: x2, y: y2, width: x3-x2, height: y3-y2))
+            context.setFillColor(wallColour )
+            context.fill(CGRect(x: x2, y: y0, width: x3-x2, height: y1-y0))
+            context.fill(CGRect(x: x2, y: y2, width: x3-x2, height: y3-y2))
 
-            CGContextSetFillColorWithColor(context, cellColour )
-            CGContextFillRect(context, CGRect(x: x2, y: y1, width: x3-x2, height: y2-y1))
+            context.setFillColor(cellColour )
+            context.fill(CGRect(x: x2, y: y1, width: x3-x2, height: y2-y1))
         }
         else
         {
-            CGContextSetFillColorWithColor(context, wallColour )
-            CGContextFillRect(context, CGRect(x: x2, y: y0, width: x3-x2, height: y3-y0))
+            context.setFillColor(wallColour )
+            context.fill(CGRect(x: x2, y: y0, width: x3-x2, height: y3-y0))
         }
 
         if cell.top
         {
-            CGContextSetFillColorWithColor(context, wallColour )
-            CGContextFillRect(context, CGRect(x: x0, y: y2, width: x1-x0, height: y3-y2))
-            CGContextFillRect(context, CGRect(x: x0, y: y2, width: x3-x2, height: y3-y2))
+            context.setFillColor(wallColour )
+            context.fill(CGRect(x: x0, y: y2, width: x1-x0, height: y3-y2))
+            context.fill(CGRect(x: x0, y: y2, width: x3-x2, height: y3-y2))
             
-            CGContextSetFillColorWithColor(context, cellColour )
-            CGContextFillRect(context, CGRect(x: x1, y: y2, width: x2-x1, height: y3-y2))
+            context.setFillColor(cellColour )
+            context.fill(CGRect(x: x1, y: y2, width: x2-x1, height: y3-y2))
         }
         else
         {
-            CGContextSetFillColorWithColor(context, wallColour )
-            CGContextFillRect(context, CGRect(x: x0, y: y2, width: x3-x0, height: y3-y2))
+            context.setFillColor(wallColour )
+            context.fill(CGRect(x: x0, y: y2, width: x3-x0, height: y3-y2))
         }
 
         if cell.bottom
         {
-            CGContextSetFillColorWithColor(context, wallColour )
-            CGContextFillRect(context, CGRect(x: x0, y: y0, width: x1-x0, height: y1-y0))
-            CGContextFillRect(context, CGRect(x: x0, y: y0, width: x3-x2, height: y1-y0))
+            context.setFillColor(wallColour )
+            context.fill(CGRect(x: x0, y: y0, width: x1-x0, height: y1-y0))
+            context.fill(CGRect(x: x0, y: y0, width: x3-x2, height: y1-y0))
             
-            CGContextSetFillColorWithColor(context, cellColour )
-            CGContextFillRect(context, CGRect(x: x1, y: y0, width: x2-x1, height: y1-y0))
+            context.setFillColor(cellColour )
+            context.fill(CGRect(x: x1, y: y0, width: x2-x1, height: y1-y0))
         }
         else
         {
-            CGContextSetFillColorWithColor(context, wallColour )
-            CGContextFillRect(context, CGRect(x: x0, y: y0, width: x3-x0, height: y1-y0))
+            context.setFillColor(wallColour )
+            context.fill(CGRect(x: x0, y: y0, width: x3-x0, height: y1-y0))
         }
     }
 
     // Local
     var dirty = true
     
-    var backgroundColour = CGColorGetConstantColor(kCGColorWhite)! { didSet { dirty = true } }
+    var backgroundColour = CGColor.white
     
-    var wallColour = CGColorGetConstantColor(kCGColorBlack)! { didSet { dirty = true } }
-    var cellColour = CGColorGetConstantColor(kCGColorWhite)! { didSet { dirty = true } }
+    var wallColour = CGColor.black
+    var cellColour = CGColor.white
     
-    var solutionColour = CGColorGetConstantColor(kCGColorBlack)! { didSet { dirty = true } }
-    var visitiedColour = CGColorGetConstantColor(kCGColorWhite)! { didSet { dirty = true } }
+    var solutionColour = CGColor.black
+    var visitiedColour = CGColor.white
     
-    var orphanedColour = CGColorGetConstantColor(kCGColorBlack)! { didSet { dirty = true } }
+    var orphanedColour = CGColor.black
 
     var tileSize: CGSize?
     var tileWallWidth: CGFloat = 0.0
@@ -114,7 +114,7 @@ class BasicTileRenderer : TileRenderer
     var tilesVisitedOverlay : TileSet?
     var tilesSolutionOverlay : TileSet?
     
-    func buildTilesets( width width: Int, height: Int, wallWidth: Int )
+    func buildTilesets( width: Int, height: Int, wallWidth: Int )
     {
         if (tileSize==nil) || CGSize(width: width, height: height) != tileSize
         {
@@ -136,7 +136,7 @@ class BasicTileRenderer : TileRenderer
             tilesSolution = TileSet()
             tilesSolution?.buildTilesWith(self, finalWidth: width, finalHeight: height, renderedWidth: 128, renderedHeight: 128, wallWidth: CGFloat(wallWidth), backColour: backgroundColour, cellColour: solutionColour, wallColour: wallColour)
 
-            let clearColour = CGColorCreateGenericRGB(0.0, 0.0, 0.0, 0.0)
+            let clearColour = CGColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
             
             tilesVisitedOverlay = TileSet()
             tilesVisitedOverlay?.buildTilesWith(self, finalWidth: width, finalHeight: height, renderedWidth: 128, renderedHeight: 128, wallWidth: CGFloat(wallWidth), backColour: clearColour, cellColour: visitiedColour, wallColour: clearColour)
@@ -151,11 +151,11 @@ class BasicTileRenderer : TileRenderer
         }
     }
     
-    func RenderWithTilesets( context:CGContextRef, rect:CGRect, maze: Maze, backgroundColour: CGColorRef, wallColour: CGColorRef, cellColour: CGColorRef, solvedCellColour: CGColorRef?, visitedCellColour: CGColorRef?, wallThickness: CGFloat, overlay: Bool = false )
+    func RenderWithTilesets( _ context:CGContext, rect:CGRect, maze: Maze, backgroundColour: CGColor, wallColour: CGColor, cellColour: CGColor, solvedCellColour: CGColor?, visitedCellColour: CGColor?, wallThickness: CGFloat, overlay: Bool = false )
     {
-        CGContextSetFillColorWithColor(context, backgroundColour )
-        CGContextSetAlpha(context, 1.0)
-        CGContextFillRect(context, rect)
+        context.setFillColor(backgroundColour )
+        context.setAlpha(1.0)
+        context.fill(rect)
 
         let cwide = rect.width / CGFloat(maze.gridW)
         let chigh = rect.height / CGFloat(maze.gridH)
@@ -164,7 +164,7 @@ class BasicTileRenderer : TileRenderer
         
         let wallWidth = max( 1.0, floor( wallThickness * cdim ) )
 
-        var backgroundColour = CGColorGetConstantColor(kCGColorWhite)! { didSet { dirty = true } }
+        var backgroundColour = CGColor.white
         
         self.wallColour = wallColour   // todo: property needs to set dirty only if the value is different
         self.cellColour = cellColour
@@ -199,16 +199,16 @@ class BasicTileRenderer : TileRenderer
                     
                     if ( overlay )
                     {
-                        CGContextDrawImage(context, cellRect, tilesEmpty!.imageCache[cell.tileID] )
+                        context.draw(tilesEmpty!.imageCache[cell.tileID]!, in: cellRect)
                         
                         let cellOverlay = maze.cellForSolution(x,useY) ?? cell
                         
                         switch solve
                         {
                         case 2:
-                            CGContextDrawImage(context, cellRect, tilesSolutionOverlay!.imageCache[cellOverlay.tileID] )
+                            context.draw(tilesSolutionOverlay!.imageCache[cellOverlay.tileID]!, in: cellRect)
                         case 1:
-                            CGContextDrawImage(context, cellRect, tilesVisitedOverlay!.imageCache[cellOverlay.tileID] )
+                            context.draw(tilesVisitedOverlay!.imageCache[cellOverlay.tileID]!, in: cellRect)
                         default:
                             break;
                         }
@@ -218,27 +218,27 @@ class BasicTileRenderer : TileRenderer
                         switch solve
                         {
                         case 2:
-                            CGContextDrawImage(context, cellRect, tilesSolution!.imageCache[cell.tileID] )
+                            context.draw(tilesSolution!.imageCache[cell.tileID]!, in: cellRect)
                         case 1:
-                            CGContextDrawImage(context, cellRect, tilesVisited!.imageCache[cell.tileID] )
+                            context.draw(tilesVisited!.imageCache[cell.tileID]!, in: cellRect)
                         default:
-                            CGContextDrawImage(context, cellRect, tilesEmpty!.imageCache[cell.tileID] )
+                            context.draw(tilesEmpty!.imageCache[cell.tileID]!, in: cellRect)
                         }
                     }
                 }
                 else
                 {
-                    CGContextDrawImage(context, cellRect, tilesEmpty!.imageCache[cell.tileID] )
+                    context.draw(tilesEmpty!.imageCache[cell.tileID]!, in: cellRect)
                 }
             }
         }
     }
     
-    func RenderDirect( context:CGContextRef, rect:CGRect, maze: Maze, backgroundColour: CGColorRef, wallColour: CGColorRef, cellColour: CGColorRef, solvedCellColour: CGColorRef?, visitedCellColour: CGColorRef?, wallThickness: CGFloat, overlay: Bool = false )
+    func RenderDirect( _ context:CGContext, rect:CGRect, maze: Maze, backgroundColour: CGColor, wallColour: CGColor, cellColour: CGColor, solvedCellColour: CGColor?, visitedCellColour: CGColor?, wallThickness: CGFloat, overlay: Bool = false )
     {
-        CGContextSetFillColorWithColor(context, backgroundColour )
-        CGContextSetAlpha(context, 1.0)
-        CGContextFillRect(context, rect)
+        context.setFillColor(backgroundColour )
+        context.setAlpha(1.0)
+        context.fill(rect)
         
         let cwide = rect.width / CGFloat(maze.gridW)
         let chigh = rect.height / CGFloat(maze.gridH)
@@ -255,7 +255,7 @@ class BasicTileRenderer : TileRenderer
         let useSolvedColour = solvedCellColour ?? cellColour
         let useVisitedColour = visitedCellColour ?? cellColour
         
-        let clearColour = CGColorCreateGenericRGB(0.0, 0.0, 0.0, 0.0)
+        let clearColour = CGColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
 
         for y in 0..<maze.gridH
         {

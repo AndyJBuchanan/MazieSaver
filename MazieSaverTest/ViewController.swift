@@ -11,7 +11,7 @@ import ScreenSaver
 
 class ViewController: NSViewController
 {
-    var animationTimer: NSTimer?
+    var animationTimer: Timer?
     
     override func viewDidLoad()
     {
@@ -22,7 +22,7 @@ class ViewController: NSViewController
         self.startAnimation()
     }
 
-    override var representedObject: AnyObject?
+    override var representedObject: Any?
     {
         didSet
         {
@@ -40,7 +40,7 @@ class ViewController: NSViewController
         
         if let saver = self.view as? ScreenSaverView
         {
-            self.animationTimer = NSTimer.scheduledTimerWithTimeInterval( saver.animationTimeInterval, target: saver, selector: "animateOneFrame", userInfo: nil, repeats: true);
+            self.animationTimer = Timer.scheduledTimer( timeInterval: saver.animationTimeInterval, target: saver, selector: #selector(ScreenSaverView.animateOneFrame), userInfo: nil, repeats: true);
         }
     }
     

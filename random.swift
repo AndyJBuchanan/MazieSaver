@@ -15,13 +15,13 @@ extension Int
         return Int( arc4random() )
     }
 
-    static func random( n: Int ) -> Int
+    static func random( _ n: Int ) -> Int
     {
         let r = Int( arc4random() ) % n
         return r
     }
 
-    static func random( min min: Int, max: Int ) -> Int
+    static func random( min: Int, max: Int ) -> Int
     {
         let r = Int( arc4random() ) % (max-min)
         return r + min
@@ -36,7 +36,7 @@ extension CGFloat
         return CGFloat(r)
     }
 
-    static func random( min min: CGFloat, max: CGFloat ) -> CGFloat
+    static func random( min: CGFloat, max: CGFloat ) -> CGFloat
     {
         return min+( CGFloat.random()*(max-min) )
     }
@@ -50,7 +50,7 @@ extension Float
         return Float(r)
     }
 
-    static func random( min min: Float, max: Float ) -> Float
+    static func random( min: Float, max: Float ) -> Float
     {
         return min+( Float.random()*(max-min) )
     }
@@ -60,7 +60,7 @@ extension CGColor
 {
     static func randomColourOpaque() -> CGColor
     {
-        let col = CGColorCreateGenericRGB(CGFloat.random(), CGFloat.random(), CGFloat.random(), 1.0 )
+        let col = CGColor(red: CGFloat.random(), green: CGFloat.random(), blue: CGFloat.random(), alpha: 1.0 )
         return col
     }
 }

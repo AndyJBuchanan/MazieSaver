@@ -15,11 +15,11 @@ struct Cell
     static let connectTop: UInt8    = 0b0000_0100
     static let connectBottom: UInt8 = 0b0000_1000
     
-    private var connections: UInt8 = 0
+    fileprivate var connections: UInt8 = 0
     
     static let zero = Cell()
     
-    private mutating func setConnection( bit: UInt8, connect: Bool )
+    fileprivate mutating func setConnection( _ bit: UInt8, connect: Bool )
     {
         if ( connect )
         {
@@ -31,7 +31,7 @@ struct Cell
         }
     }
     
-    private func getConnection( bit: UInt8 ) -> Bool
+    fileprivate func getConnection( _ bit: UInt8 ) -> Bool
     {
         return ( connections & bit ) == bit
     }
@@ -57,7 +57,7 @@ struct Cell
             set { setConnection( Cell.connectBottom, connect: newValue ) }
         }
 
-    private static let connectCounts = [ 0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4 ]
+    fileprivate static let connectCounts = [ 0, 1, 1, 2, 1, 2, 2, 3, 1, 2, 2, 3, 2, 3, 3, 4 ]
     
     var count: Int
         {
@@ -66,14 +66,14 @@ struct Cell
     
     var tileID: Int { return Int(connections) }
     
-    static func fromID( id: Int ) -> Cell { return Cell(connections: UInt8(id) ) }
+    static func fromID( _ id: Int ) -> Cell { return Cell(connections: UInt8(id) ) }
     
     static var validTileIDs: [Int] { return (0...15).map{ $0 } }
 }
 
 enum NavigationDirection : UInt8
 {
-    case Left = 0, Right, Top, Bottom
+    case left = 0, right, top, bottom
 }
 
 class Maze
@@ -88,7 +88,7 @@ class Maze
     var entrance = (x:0,y:0)
     var exit = (x:0,y:0)
     
-    private func initialiseGrid( width width: Int, height: Int )
+    fileprivate func initialiseGrid( width: Int, height: Int )
     {
         gridW = max(width, 5)
         gridH = max(height, 5)
@@ -97,41 +97,41 @@ class Maze
         grid.reserveCapacity( gridH )
         for _ in 0..<gridH
         {
-            grid.append( Array<Cell>(count: gridW, repeatedValue: Cell.zero) )
+            grid.append( Array<Cell>(repeating: Cell.zero, count: gridW) )
         }
     }
     
-    private func connectionCount( x: Int, _ y: Int ) -> Int
+    fileprivate func connectionCount( _ x: Int, _ y: Int ) -> Int
     {
         let cell = grid[y][x]
         var count = 0
-        if cell.left { ++count }
-        if cell.right { ++count }
-        if cell.top { ++count }
-        if cell.bottom { ++count }
+        if cell.left { count += 1 }
+        if cell.right { count += 1 }
+        if cell.top { count += 1 }
+        if cell.bottom { count += 1 }
         return count
     }
     
-    private func connectionSet( x: Int, _ y: Int, dir: NavigationDirection, make: Bool ) -> Bool
+    fileprivate func connectionSet( _ x: Int, _ y: Int, dir: NavigationDirection, make: Bool ) -> Bool
     {
-        if ( y==0 ) && ( dir == .Top ){ return false }
-        if ( y==(gridH-1) ) && ( dir == .Bottom ){ return false }
+        if ( y==0 ) && ( dir == .top ){ return false }
+        if ( y==(gridH-1) ) && ( dir == .bottom ){ return false }
         
         switch dir
         {
-        case .Left:
+        case .left:
             if x==0 { return false }
             (grid[y][x]).left = make
             (grid[y][x-1]).right = make
-        case .Right:
+        case .right:
             if x==(gridW-1) { return false }
             (grid[y][x]).right = make
             (grid[y][x+1]).left = make
-        case .Top:
+        case .top:
             if y==0 { return false }
             (grid[y][x]).top = make
             (grid[y-1][x]).bottom = make
-        case .Bottom:
+        case .bottom:
             if y==(gridH-1) { return false }
             (grid[y][x]).bottom = make
             (grid[y+1][x]).top = make
@@ -140,17 +140,17 @@ class Maze
         return true
     }
 
-    private func connectOne( x: Int, _ y: Int, dir: NavigationDirection ) -> Bool
+    fileprivate func connectOne( _ x: Int, _ y: Int, dir: NavigationDirection ) -> Bool
     {
         return connectionSet(x, y, dir: dir, make: true )
     }
 
-    private func disconnectOne( x: Int, _ y: Int, dir: NavigationDirection ) -> Bool
+    fileprivate func disconnectOne( _ x: Int, _ y: Int, dir: NavigationDirection ) -> Bool
     {
         return connectionSet(x, y, dir: dir, make: false )
     }
     
-    private func randomGrid()
+    fileprivate func randomGrid()
     {
         // Make sure grid is fully unconnected
         initialiseGrid( width: gridW, height: gridH )
@@ -174,7 +174,7 @@ class Maze
         }
     }
     
-    private func pickExits()
+    fileprivate func pickExits()
     {
         if ( Float.random() < 0.5 )
         {
@@ -192,7 +192,7 @@ class Maze
         }
     }
     
-    private func hasUnconnectedNeighbours( x: Int, _ y: Int ) -> Bool
+    fileprivate func hasUnconnectedNeighbours( _ x: Int, _ y: Int ) -> Bool
     {
         var score = 0
         if ( x > 0 ){ score += scores[y][x-1] }
@@ -204,7 +204,7 @@ class Maze
     
     typealias ScoreStackEntry = (x:Int, y:Int, score:Int, exit:Bool)
     
-    private func recursiveScore( x: Int, _ y: Int, score: Int, inout scoreStack: [ScoreStackEntry] ) -> Bool
+    fileprivate func recursiveScore( _ x: Int, _ y: Int, score: Int, scoreStack: inout [ScoreStackEntry] ) -> Bool
     {
         if ( ( x < 0 ) || ( x >= gridW  ) ){ return false } // Off Maze edge?
         if ( ( y < 0 ) || ( y >= gridH  ) ){ return false }
@@ -216,8 +216,8 @@ class Maze
         if ( ( x == exit.x ) && ( y == exit.y ) )
         {
             // Found the exit! ( Make note of this interesting occurrence at the base of the stack! )
-            scoreStack.insert((x:x, y:y, score:score, exit:false), atIndex: 0)
-            scoreStack.insert((x:x, y:y, score:100000, exit:true), atIndex: 0)
+            scoreStack.insert((x:x, y:y, score:score, exit:false), at: 0)
+            scoreStack.insert((x:x, y:y, score:100000, exit:true), at: 0)
             // todo: should be able to change to clearing the stack if/when we decide to process orphans separately
             return true;
         }
@@ -244,12 +244,12 @@ class Maze
     }
     
     // Pick an unconnected neighbour. Optimised version. Less random
-    private func pickUnscored( x: Int, _ y: Int ) -> NavigationDirection?
+    fileprivate func pickUnscored( _ x: Int, _ y: Int ) -> NavigationDirection?
     {
-        let leftDir: NavigationDirection? = ( ( x>0 ) && ( scores[y][x-1] == 0 ) ) ? .Left : nil
-        let rightDir: NavigationDirection? = ( ( x<gridW-1) && ( scores[y][x+1] == 0 ) ) ? .Right : nil
-        let topDir: NavigationDirection? = ( ( y>0 ) && ( scores[y-1][x] == 0 ) ) ? .Top : nil
-        let bottomDir: NavigationDirection? = ( ( y<gridH-1 ) && ( scores[y+1][x] == 0 ) ) ? .Bottom : nil
+        let leftDir: NavigationDirection? = ( ( x>0 ) && ( scores[y][x-1] == 0 ) ) ? .left : nil
+        let rightDir: NavigationDirection? = ( ( x<gridW-1) && ( scores[y][x+1] == 0 ) ) ? .right : nil
+        let topDir: NavigationDirection? = ( ( y>0 ) && ( scores[y-1][x] == 0 ) ) ? .top : nil
+        let bottomDir: NavigationDirection? = ( ( y<gridH-1 ) && ( scores[y+1][x] == 0 ) ) ? .bottom : nil
 
         if ( Float.random() > 0.31 )
         {
@@ -279,14 +279,14 @@ class Maze
         
     }
     
-    private func scoreAndJoin() -> Bool
+    fileprivate func scoreAndJoin() -> Bool
     {
         // Empty Scores
         scores = []
         scores.reserveCapacity( gridH )
         for _ in 0..<gridH
         {
-            scores.append( Array<Int>(count: gridW, repeatedValue: 0) )
+            scores.append( Array<Int>(repeating: 0, count: gridW) )
         }
         
         // Score recursively from entrance & exits
@@ -311,7 +311,7 @@ class Maze
         return false;
     }
     
-    final func generateMaze( w w: Int, h: Int )
+    final func generateMaze( w: Int, h: Int )
     {
         initialiseGrid(width: w, height: h )
         randomGrid()
@@ -359,17 +359,17 @@ class Maze
                     if s == 2 { cell1[1]="." }
                 }
                 
-                line0 = line0.stringByAppendingString( cell0[0] )
-                line0 = line0.stringByAppendingString( cell0[1] )
-                line0 = line0.stringByAppendingString( cell0[2] )
+                line0 = line0 + cell0[0]
+                line0 = line0 + cell0[1]
+                line0 = line0 + cell0[2]
                 
-                line1 = line1.stringByAppendingString( cell1[0] )
-                line1 = line1.stringByAppendingString( cell1[1] )
-                line1 = line1.stringByAppendingString( cell1[2] )
+                line1 = line1 + cell1[0]
+                line1 = line1 + cell1[1]
+                line1 = line1 + cell1[2]
 
-                line2 = line2.stringByAppendingString( cell2[0] )
-                line2 = line2.stringByAppendingString( cell2[1] )
-                line2 = line2.stringByAppendingString( cell2[2] )
+                line2 = line2 + cell2[0]
+                line2 = line2 + cell2[1]
+                line2 = line2 + cell2[2]
             }
             
             print( line0 )
@@ -378,7 +378,7 @@ class Maze
         }
     }
     
-    final func cellForSolution( x: Int, _ y: Int ) -> Cell?
+    final func cellForSolution( _ x: Int, _ y: Int ) -> Cell?
     {
         if ( x<0 ){ return nil }
         if ( y<0 ){ return nil }

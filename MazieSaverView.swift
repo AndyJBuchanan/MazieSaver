@@ -26,9 +26,9 @@ class MazieSaverView : ScreenSaverView
         //fatalError("init(coder:) has not been implemented")
     }
     
-    override func drawRect(rect: NSRect)
+    override func draw(_ rect: NSRect)
     {
-        let context: CGContextRef = NSGraphicsContext.currentContext()!.CGContext
+        let context: CGContext = NSGraphicsContext.current!.cgContext
         
         DEBUG_ShowSomething(context, rect: rect)
 
@@ -58,11 +58,11 @@ class MazieSaverView : ScreenSaverView
     var maze: Maze?
     var lastMazeRect = CGRect.zero
 
-    let backCol = CGColorCreateGenericRGB(0.0, 0.0, 0.0, 1.0)
-    var cellCol = CGColorCreateGenericRGB( 1.0, 1.0, 0.0, CGFloat(1.0) )
-    var wallCol = CGColorCreateGenericRGB( 0.0, 0.0, 1.0, CGFloat(1.0) )
-    var solveCol = CGColorCreateGenericRGB( 1.0, 0.0, 1.0, CGFloat(1.0) )
-    var vistedCol = CGColorCreateGenericRGB( 0.45, 0.0, 0.25, CGFloat(1.0) )
+    let backCol = CGColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+    var cellCol = CGColor( red: 1.0, green: 1.0, blue: 0.0, alpha: CGFloat(1.0) )
+    var wallCol = CGColor( red: 0.0, green: 0.0, blue: 1.0, alpha: CGFloat(1.0) )
+    var solveCol = CGColor( red: 1.0, green: 0.0, blue: 1.0, alpha: CGFloat(1.0) )
+    var vistedCol = CGColor( red: 0.45, green: 0.0, blue: 0.25, alpha: CGFloat(1.0) )
     
     var wallThickness:CGFloat = 0.2
 
@@ -70,7 +70,7 @@ class MazieSaverView : ScreenSaverView
     
     var tiledRender = true
     
-    private func DrawMaze( context: CGContextRef, rect: CGRect )
+    fileprivate func DrawMaze( _ context: CGContext, rect: CGRect )
     {
         // Regenerate the maze if required
         if ( maze == nil ) || ( lastMazeRect != rect )
@@ -106,10 +106,10 @@ class MazieSaverView : ScreenSaverView
         }
     }
     
-    private func DEBUG_ShowTiles( context: CGContextRef, rect: CGRect )
+    fileprivate func DEBUG_ShowTiles( _ context: CGContext, rect: CGRect )
     {
-        let cellCol = CGColorCreateGenericRGB( 1.0, 1.0, 0.0, CGFloat(1.0) )
-        let wallCol = CGColorCreateGenericRGB( 0.0, 0.0, 1.0, CGFloat(1.0) )
+        let cellCol = CGColor( red: 1.0, green: 1.0, blue: 0.0, alpha: CGFloat(1.0) )
+        let wallCol = CGColor( red: 0.0, green: 0.0, blue: 1.0, alpha: CGFloat(1.0) )
         
         let nwide = rect.width / 8
         let nhigh = rect.height / 2
@@ -120,18 +120,18 @@ class MazieSaverView : ScreenSaverView
             let nx = CGFloat( n % 8 ) * nwide
             let ny = CGFloat( n / 8 ) * nhigh
             
-            renderer?.renderTileToContext( context, rect:CGRect(x: nx, y: ny, width: cellwide, height: cellwide), tileID: n, wallWidth: wallWide, backColour: CGColorGetConstantColor(kCGColorBlack)!, cellColour:cellCol, wallColour:wallCol )
+            renderer?.renderTileToContext( context, rect:CGRect(x: nx, y: ny, width: cellwide, height: cellwide), tileID: n, wallWidth: wallWide, backColour: CGColor.black, cellColour:cellCol, wallColour:wallCol )
         }
     }
 
-    private func DEBUG_ShowSomething( context: CGContextRef, rect: CGRect )
+    fileprivate func DEBUG_ShowSomething( _ context: CGContext, rect: CGRect )
     {
         let randCol = CGColor.randomColourOpaque()
         
-        CGContextSetBlendMode(context, CGBlendMode.Normal)
-        CGContextSetFillColorWithColor(context, randCol )
-        CGContextSetAlpha(context, 1.0)
-        CGContextFillRect(context, rect )
+        context.setBlendMode(CGBlendMode.normal)
+        context.setFillColor(randCol )
+        context.setAlpha(1.0)
+        context.fill(rect )
         
         let nwide = rect.width / 8
         let nhigh = rect.height / 2
@@ -141,9 +141,9 @@ class MazieSaverView : ScreenSaverView
             let nx = CGFloat( n % 8 ) * nwide
             let ny = CGFloat( n / 8 ) * nhigh
             
-            CGContextSetFillColorWithColor(context, CGColor.randomColourOpaque() )
-            CGContextSetAlpha(context, 1.0)
-            CGContextFillRect(context, CGRect(x: nx, y: ny, width: cellwide, height: cellwide) )
+            context.setFillColor(CGColor.randomColourOpaque() )
+            context.setAlpha(1.0)
+            context.fill(CGRect(x: nx, y: ny, width: cellwide, height: cellwide) )
         }
     }
 }

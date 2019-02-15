@@ -16,7 +16,7 @@ extension Maze
         solution.reserveCapacity( gridH )
         for _ in 0..<gridH
         {
-            solution.append( Array<Int>(count: gridW, repeatedValue: 2) )
+            solution.append( Array<Int>(repeating: 2, count: gridW) )
         }
 
         var gridCopy = grid
@@ -43,12 +43,12 @@ extension Maze
                         if ( y>0 )      { gridCopy[y-1][x].bottom=false }
                         if ( y<gridH-1 ){ gridCopy[y+1][x].top=false }
                         
-                        ++deletedSquares
+                        deletedSquares += 1
                     }
                 }
             }
             
-            ++passCount
+            passCount += 1
         }
 
         print("Boxes Solve took \(passCount) passes")

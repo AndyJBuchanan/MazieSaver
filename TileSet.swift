@@ -10,7 +10,7 @@ import Cocoa
 
 protocol TileRenderer
 {
-    func renderTileToContext( context:CGContextRef, rect:CGRect, tileID: Int, wallWidth: CGFloat, backColour: CGColorRef, cellColour:CGColorRef, wallColour:CGColorRef ) -> Void
+    func renderTileToContext( _ context:CGContext, rect:CGRect, tileID: Int, wallWidth: CGFloat, backColour: CGColor, cellColour:CGColor, wallColour:CGColor ) -> Void
 }
 
 class TileSet
@@ -19,7 +19,7 @@ class TileSet
     
     var imageCache: [Int:CGImage] = [:]       // TileID dictionary
     
-    func buildTilesWith( renderer: TileRenderer, finalWidth:Int, finalHeight:Int, renderedWidth:Int, renderedHeight: Int, wallWidth: CGFloat, backColour: CGColorRef, cellColour:CGColorRef, wallColour:CGColorRef ) -> Bool
+    func buildTilesWith( _ renderer: TileRenderer, finalWidth:Int, finalHeight:Int, renderedWidth:Int, renderedHeight: Int, wallWidth: CGFloat, backColour: CGColor, cellColour:CGColor, wallColour:CGColor ) -> Bool
     {
         // Builds a new tile set with final dimensions w x h, by scaling tiles
         // of rw x rh rendered by the supplied renderer function. Renderer can use the imageIndex
@@ -27,9 +27,9 @@ class TileSet
 
         // todo: actually use the render size & do a nice filtered downscale. We're just drawing direct to final size at moment..
         
-        let colourSpace = CGColorSpaceCreateWithName( kCGColorSpaceGenericRGBLinear )
+        let colourSpace = CGColorSpace( name: CGColorSpace.genericRGBLinear )
         
-        guard let tileContext = CGBitmapContextCreate(UnsafeMutablePointer<Void>(), finalWidth, finalHeight, 8, 0, colourSpace, CGImageAlphaInfo.PremultipliedLast.rawValue )
+        guard let tileContext = CGContext(data: nil, width: finalWidth, height: finalHeight, bitsPerComponent: 8, bytesPerRow: 0, space: colourSpace!, bitmapInfo: CGImageAlphaInfo.premultipliedLast.rawValue )
         else
         {
             print("Failed to create bitmap context")
@@ -42,7 +42,7 @@ class TileSet
         for tileID in Cell.validTileIDs
         {
             renderer.renderTileToContext(tileContext, rect: tileRect, tileID: tileID, wallWidth: adjustedWallWidth, backColour: backColour, cellColour: cellColour, wallColour: wallColour )
-            imageCache[ tileID ] = CGBitmapContextCreateImage(tileContext)
+            imageCache[ tileID ] = tileContext.makeImage()
         }
         
         // What about releasing these things?

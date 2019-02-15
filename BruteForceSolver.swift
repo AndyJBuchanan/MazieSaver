@@ -12,7 +12,7 @@ extension Maze
 {
     final func BruteForceSolve() -> Bool
     {
-        func recursiveSolve( x: Int, _ y: Int ) -> Bool
+        func recursiveSolve( _ x: Int, _ y: Int ) -> Bool
         {
             if ( ( x < 0 ) || ( x >= gridW )  ){ return false }
             if ( ( y < 0 ) || ( y >= gridH )  ){ return false }
@@ -40,7 +40,7 @@ extension Maze
         solution.reserveCapacity( gridH )
         for _ in 0..<gridH
         {
-            solution.append( Array<Int>(count: gridW, repeatedValue: 0) )
+            solution.append( Array<Int>(repeating: 0, count: gridW) )
         }
         
         return recursiveSolve( entrance.x, entrance.y )
@@ -52,8 +52,9 @@ extension Maze
         typealias stackEntry = (x:Int,x:Int)
         var stack:[stackEntry] = []
         
-        func solve( var x: Int, var _ y: Int ) -> Bool
+        func solve( _ x: Int, _ y: Int ) -> Bool
         {
+            var x = x, y = y
             while true
             {
                 if ( x < 0 ) || ( x >= gridW ) || ( y < 0 ) || ( y >= gridH ) || ( solution[ y ][ x ] > 0 )
@@ -122,7 +123,7 @@ extension Maze
         solution.reserveCapacity( gridH )
         for _ in 0..<gridH
         {
-            solution.append( Array<Int>(count: gridW, repeatedValue: 0) )
+            solution.append( Array<Int>(repeating: 0, count: gridW) )
         }
         
         return solve( entrance.x, entrance.y )
