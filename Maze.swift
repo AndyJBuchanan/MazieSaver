@@ -204,12 +204,12 @@ class Maze
     
     typealias ScoreStackEntry = (x:Int, y:Int, score:Int, exit:Bool)
     
-    fileprivate func recursiveScore( _ x: Int, _ y: Int, score: Int, scoreStack: inout [ScoreStackEntry] ) -> Bool
+    fileprivate func recursiveScore( _ x: Int, _ y: Int, score: Int, scoreStack: inout [ScoreStackEntry] )
     {
-        if ( ( x < 0 ) || ( x >= gridW  ) ){ return false } // Off Maze edge?
-        if ( ( y < 0 ) || ( y >= gridH  ) ){ return false }
+        if ( ( x < 0 ) || ( x >= gridW  ) ){ return } // Off Maze edge?
+        if ( ( y < 0 ) || ( y >= gridH  ) ){ return }
         
-        if ( scores[ y ][ x ] > 0 ){ return false }         // Already visited?
+        if ( scores[ y ][ x ] > 0 ){ return }         // Already visited?
         
         scores[ y ][ x ] = score;                           // Store score
         
@@ -219,7 +219,7 @@ class Maze
             scoreStack.insert((x:x, y:y, score:score, exit:false), at: 0)
             scoreStack.insert((x:x, y:y, score:100000, exit:true), at: 0)
             // todo: should be able to change to clearing the stack if/when we decide to process orphans separately
-            return true;
+            return;
         }
         
         let high = ( scoreStack.last?.score ?? 0 ) // unwrapped value or default
@@ -240,7 +240,7 @@ class Maze
         if ( cell.top ){ recursiveScore( x, y-1, score: score+1, scoreStack: &scoreStack ) }
         if ( cell.bottom ){ recursiveScore( x, y+1, score: score+1, scoreStack: &scoreStack ) }
         
-        return true;
+        return;
     }
     
     // Pick an unconnected neighbour. Optimised version. Less random
