@@ -6,6 +6,8 @@
 //  Copyright © 2015 Andy Buchanan. All rights reserved.
 //
 
+// Note! Screen Savers are stored in '~/Library/Screen Savers'
+
 import Foundation
 
 import Cocoa
