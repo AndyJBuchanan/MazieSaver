@@ -103,20 +103,16 @@ class Maze
     
     fileprivate func connectionCount( _ x: Int, _ y: Int ) -> Int
     {
-        let cell = grid[y][x]
-        var count = 0
-        if cell.left { count += 1 }
-        if cell.right { count += 1 }
-        if cell.top { count += 1 }
-        if cell.bottom { count += 1 }
+        return grid[y][x].count;
 
-        let cc = cell.count;
-        if ( cc != count )
-        {
-            print ( "Damn!" );
-        }
-
-        return count
+//        let cell = grid[y][x]
+//        var count = 0
+//        if cell.left { count += 1 }
+//        if cell.right { count += 1 }
+//        if cell.top { count += 1 }
+//        if cell.bottom { count += 1 }
+//
+//        return count
     }
     
     fileprivate func connectionSet( _ x: Int, _ y: Int, dir: NavigationDirection, make: Bool ) -> Bool
