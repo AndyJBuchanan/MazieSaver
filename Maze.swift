@@ -109,6 +109,13 @@ class Maze
         if cell.right { count += 1 }
         if cell.top { count += 1 }
         if cell.bottom { count += 1 }
+
+        let cc = cell.count;
+        if ( cc != count )
+        {
+            print ( "Damn!" );
+        }
+
         return count
     }
     
@@ -160,6 +167,7 @@ class Maze
             for x in 0..<gridW
             {
                 var numConnections = connectionCount( x,  y )
+
                 var targetConnections = 0
                 if Float.random() > 0.75 { targetConnections = 0 }
                 else { targetConnections = 1 }
@@ -167,7 +175,7 @@ class Maze
                 while ( numConnections < targetConnections )
                 {
                     let randomDirection = NavigationDirection( rawValue: UInt8( Int.random(4) ) )
-                    connectOne( x,  y, dir: randomDirection! )
+                    _ = connectOne( x,  y, dir: randomDirection! )                                              // Note to self! _ = X expresses a discarded result!
                     numConnections = connectionCount( x, y )
                 }
             }
@@ -301,7 +309,7 @@ class Maze
             
             if let newDir = pickUnscored( top.x, top.y )
             {
-                connectOne( top.x, top.y, dir: newDir );
+                _ = connectOne( top.x, top.y, dir: newDir );
                 scores[ top.y ][ top.x ] = 0;
                 recursiveScore( top.x, top.y, score: top.score, scoreStack: &scorestack );
             }

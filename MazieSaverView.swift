@@ -84,7 +84,7 @@ class MazieSaverView : ScreenSaverView
             let ydim = Int( floor( rect.height / rdim ) )
             
             maze?.generateMaze(w: xdim, h: ydim)
-            maze?.BruteForceSolve2()
+            _ = maze?.BruteForceSolve2()
             //maze?.BoxSolve()
             //maze?.printMazeToTTY()
             

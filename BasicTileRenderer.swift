@@ -128,21 +128,21 @@ class BasicTileRenderer : TileRenderer
         if ( dirty )
         {
             tilesEmpty = TileSet()
-            tilesEmpty?.buildTilesWith(self, finalWidth: width, finalHeight: height, renderedWidth: 128, renderedHeight: 128, wallWidth: CGFloat(wallWidth), backColour: backgroundColour, cellColour: cellColour, wallColour: wallColour)
+            _ = tilesEmpty?.buildTilesWith(self, finalWidth: width, finalHeight: height, renderedWidth: 128, renderedHeight: 128, wallWidth: CGFloat(wallWidth), backColour: backgroundColour, cellColour: cellColour, wallColour: wallColour)
             
             tilesVisited = TileSet()
-            tilesVisited?.buildTilesWith(self, finalWidth: width, finalHeight: height, renderedWidth: 128, renderedHeight: 128, wallWidth: CGFloat(wallWidth), backColour: backgroundColour, cellColour: visitiedColour, wallColour: wallColour)
+            _ = tilesVisited?.buildTilesWith(self, finalWidth: width, finalHeight: height, renderedWidth: 128, renderedHeight: 128, wallWidth: CGFloat(wallWidth), backColour: backgroundColour, cellColour: visitiedColour, wallColour: wallColour)
             
             tilesSolution = TileSet()
-            tilesSolution?.buildTilesWith(self, finalWidth: width, finalHeight: height, renderedWidth: 128, renderedHeight: 128, wallWidth: CGFloat(wallWidth), backColour: backgroundColour, cellColour: solutionColour, wallColour: wallColour)
+            _ = tilesSolution?.buildTilesWith(self, finalWidth: width, finalHeight: height, renderedWidth: 128, renderedHeight: 128, wallWidth: CGFloat(wallWidth), backColour: backgroundColour, cellColour: solutionColour, wallColour: wallColour)
 
             let clearColour = CGColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
             
             tilesVisitedOverlay = TileSet()
-            tilesVisitedOverlay?.buildTilesWith(self, finalWidth: width, finalHeight: height, renderedWidth: 128, renderedHeight: 128, wallWidth: CGFloat(wallWidth), backColour: clearColour, cellColour: visitiedColour, wallColour: clearColour)
+            _ = tilesVisitedOverlay?.buildTilesWith(self, finalWidth: width, finalHeight: height, renderedWidth: 128, renderedHeight: 128, wallWidth: CGFloat(wallWidth), backColour: clearColour, cellColour: visitiedColour, wallColour: clearColour)
 
             tilesSolutionOverlay = TileSet()
-            tilesSolutionOverlay?.buildTilesWith(self, finalWidth: width, finalHeight: height, renderedWidth: 128, renderedHeight: 128, wallWidth: CGFloat(wallWidth), backColour: clearColour, cellColour: solutionColour, wallColour: clearColour)
+            _ = tilesSolutionOverlay?.buildTilesWith(self, finalWidth: width, finalHeight: height, renderedWidth: 128, renderedHeight: 128, wallWidth: CGFloat(wallWidth), backColour: clearColour, cellColour: solutionColour, wallColour: clearColour)
             
             tileSize = CGSize(width: width, height: height)
             tileWallWidth = CGFloat(wallWidth)
@@ -164,8 +164,6 @@ class BasicTileRenderer : TileRenderer
         
         let wallWidth = max( 1.0, floor( wallThickness * cdim ) )
 
-        var backgroundColour = CGColor.white
-        
         self.wallColour = wallColour   // todo: property needs to set dirty only if the value is different
         self.cellColour = cellColour
         self.solutionColour = solvedCellColour ?? cellColour
