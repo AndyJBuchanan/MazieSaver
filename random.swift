@@ -64,18 +64,6 @@ extension Float
 
 extension CGColor
 {
-    // todo: move to own file
-    static func fromRGBA( red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat ) -> CGColor
-    {
-        #if os(iOS)
-            let col = UIColor( red: red, green: green, blue: blue, alpha: alpha )
-            return col.cgColor
-        #else
-            let col = CGColor( red: red, green: green, blue: blue, alpha: alpha )
-            return col
-        #endif
-    }
-    
     static func randomColourOpaque() -> CGColor
     {
         #if os(iOS)

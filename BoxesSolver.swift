@@ -6,8 +6,6 @@
 //  Copyright © 2015 Andy Buchanan. All rights reserved.
 //
 
-//import Cocoa
-
 extension Maze
 {
     final func BoxSolve() -> Bool

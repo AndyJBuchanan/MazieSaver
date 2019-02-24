@@ -13,73 +13,72 @@
 import Foundation
 
 #if os(iOS)
-import UIKit
-import CoreGraphics
+    import UIKit
+    import CoreGraphics
 #else
-import Cocoa
-import ScreenSaver
+    import Cocoa
+    import ScreenSaver
 #endif
 
-class MazieSaverView : ScreenSaverView
+class MazieSaverCore
 {
-    override init?(frame: NSRect, isPreview: Bool)
-    {
-        super.init(frame: frame, isPreview: isPreview)
-        self.animationTimeInterval = 3.0
-    }
+    var renderer: BasicTileRenderer?
     
-    required init?(coder: NSCoder)
+    fileprivate func DEBUG_ShowSomething( _ context: CGContext, rect: CGRect )
     {
-        super.init(coder: coder)
-        self.animationTimeInterval = 3.0
-        //fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func draw(_ rect: NSRect)
-    {
-        let context: CGContext = NSGraphicsContext.current!.cgContext
+        let randCol = CGColor.randomColourOpaque()
         
-        DEBUG_ShowSomething(context, rect: rect)
-
-        if ( renderer==nil )
+        context.setBlendMode(CGBlendMode.normal)
+        context.setFillColor(randCol )
+        context.setAlpha(1.0)
+        context.fill(rect )
+        
+        let nwide = rect.width / 8
+        let nhigh = rect.height / 2
+        let cellwide = min(nwide, nhigh) * 0.9
+        for n in 0...15
         {
-            renderer = BasicTileRenderer()
+            let nx = CGFloat( n % 8 ) * nwide
+            let ny = CGFloat( n / 8 ) * nhigh
+            
+            context.setFillColor(CGColor.randomColourOpaque() )
+            context.setAlpha(1.0)
+            context.fill(CGRect(x: nx, y: ny, width: cellwide, height: cellwide) )
         }
-        
-        DEBUG_ShowTiles(context, rect: rect)
-        
-        DrawMaze(context, rect: rect)
     }
     
-    override func animateOneFrame()
+    fileprivate func DEBUG_ShowTiles( _ context: CGContext, rect: CGRect )
     {
-        newMaze()
-        needsDisplay = true
+        let cellCol = CGColor.from_RGBA( red: 1.0, green: 1.0, blue: 0.0, alpha: CGFloat(1.0) )
+        let wallCol = CGColor.from_RGBA( red: 0.0, green: 0.0, blue: 1.0, alpha: CGFloat(1.0) )
+        
+        let nwide = rect.width / 8
+        let nhigh = rect.height / 2
+        let cellwide = min(nwide, nhigh) * 0.9
+        let wallWide = cellwide / 5
+        for n in 0...15
+        {
+            let nx = CGFloat( n % 8 ) * nwide
+            let ny = CGFloat( n / 8 ) * nhigh
+            
+            renderer?.renderTileToContext( context, rect:CGRect(x: nx, y: ny, width: cellwide, height: cellwide), tileID: n, wallWidth: wallWide, backColour: CGColor.getBlack(), cellColour:cellCol, wallColour:wallCol )
+        }
     }
     
-    func newMaze()
-    {
-        // Force regeneration of maze
-        maze = nil
-        needsDisplay = true;
-    }
-
     var maze: Maze?
     var lastMazeRect = CGRect.zero
-
-    let backCol = CGColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
-    var cellCol = CGColor( red: 1.0, green: 1.0, blue: 0.0, alpha: CGFloat(1.0) )
-    var wallCol = CGColor( red: 0.0, green: 0.0, blue: 1.0, alpha: CGFloat(1.0) )
-    var solveCol = CGColor( red: 1.0, green: 0.0, blue: 1.0, alpha: CGFloat(1.0) )
-    var vistedCol = CGColor( red: 0.45, green: 0.0, blue: 0.25, alpha: CGFloat(1.0) )
     
-    var wallThickness:CGFloat = 0.2
+    let backCol = CGColor.from_RGBA(red: 0.0, green: 0.0, blue: 0.0, alpha: 1.0)
+    var cellCol = CGColor.from_RGBA( red: 1.0, green: 1.0, blue: 0.0, alpha: CGFloat(1.0) )
+    var wallCol = CGColor.from_RGBA( red: 0.0, green: 0.0, blue: 1.0, alpha: CGFloat(1.0) )
+    var solveCol = CGColor.from_RGBA( red: 1.0, green: 0.0, blue: 1.0, alpha: CGFloat(1.0) )
+    var vistedCol = CGColor.from_RGBA( red: 0.45, green: 0.0, blue: 0.25, alpha: CGFloat(1.0) )
 
-    var renderer: BasicTileRenderer?
+    var wallThickness:CGFloat = 0.2
     
     // Note: The Tile renderer is significantly quicker, try to always use it!
     var tiledRender = true
-    
+
     fileprivate func DrawMaze( _ context: CGContext, rect: CGRect )
     {
         // Regenerate the maze if required
@@ -87,7 +86,7 @@ class MazieSaverView : ScreenSaverView
         {
             maze = Maze()
             
-            let rdim = floor( CGFloat.random( min: 3.0, max: min(rect.width/20.0,8.0) ) ) 
+            let rdim = floor( CGFloat.random( min: 3.0, max: min(rect.width/20.0,8.0) ) )
             let xdim = Int( floor( rect.width / rdim ) )
             let ydim = Int( floor( rect.height / rdim ) )
             
@@ -116,44 +115,116 @@ class MazieSaverView : ScreenSaverView
         }
     }
     
-    fileprivate func DEBUG_ShowTiles( _ context: CGContext, rect: CGRect )
+    func draw(_ rect: CGRect, _ context: CGContext)
     {
-        let cellCol = CGColor( red: 1.0, green: 1.0, blue: 0.0, alpha: CGFloat(1.0) )
-        let wallCol = CGColor( red: 0.0, green: 0.0, blue: 1.0, alpha: CGFloat(1.0) )
+        DEBUG_ShowSomething(context, rect: rect)
         
-        let nwide = rect.width / 8
-        let nhigh = rect.height / 2
-        let cellwide = min(nwide, nhigh) * 0.9
-        let wallWide = cellwide / 5
-        for n in 0...15
+        if ( renderer==nil )
         {
-            let nx = CGFloat( n % 8 ) * nwide
-            let ny = CGFloat( n / 8 ) * nhigh
-            
-            renderer?.renderTileToContext( context, rect:CGRect(x: nx, y: ny, width: cellwide, height: cellwide), tileID: n, wallWidth: wallWide, backColour: CGColor.black, cellColour:cellCol, wallColour:wallCol )
+            renderer = BasicTileRenderer()
         }
+        
+        DEBUG_ShowTiles(context, rect: rect)
+        
+        DrawMaze(context, rect: rect)
     }
-
-    fileprivate func DEBUG_ShowSomething( _ context: CGContext, rect: CGRect )
+    
+    func newMaze()
     {
-        let randCol = CGColor.randomColourOpaque()
-        
-        context.setBlendMode(CGBlendMode.normal)
-        context.setFillColor(randCol )
-        context.setAlpha(1.0)
-        context.fill(rect )
-        
-        let nwide = rect.width / 8
-        let nhigh = rect.height / 2
-        let cellwide = min(nwide, nhigh) * 0.9
-        for n in 0...15
-        {
-            let nx = CGFloat( n % 8 ) * nwide
-            let ny = CGFloat( n / 8 ) * nhigh
-            
-            context.setFillColor(CGColor.randomColourOpaque() )
-            context.setAlpha(1.0)
-            context.fill(CGRect(x: nx, y: ny, width: cellwide, height: cellwide) )
-        }
+        // Force regeneration of maze
+        maze = nil
     }
 }
+
+
+#if os(iOS)
+
+import UIKit
+
+class MazieSaverView : UIView
+{
+    var core = MazieSaverCore()
+    
+    override init(frame: CGRect)
+    {
+        super.init(frame: frame)
+        
+        let animationTimeInterval = TimeInterval(3)
+        Timer.scheduledTimer( timeInterval: animationTimeInterval, target: self, selector:  #selector(animateOneFrame), userInfo: nil, repeats: true )
+    }
+    
+    required init?(coder: NSCoder)
+    {
+        //fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+
+        let animationTimeInterval = TimeInterval(3)
+        Timer.scheduledTimer( timeInterval: animationTimeInterval, target: self, selector:  #selector(animateOneFrame), userInfo: nil, repeats: true )
+    }
+    
+    override func draw(_ rect: CGRect)
+    {
+        if let context = UIGraphicsGetCurrentContext()
+        {
+            core.draw(rect, context)
+        }
+    }
+    
+    @objc func animateOneFrame()
+    {
+        newMaze()
+        setNeedsDisplay()
+    }
+    
+    func newMaze()
+    {
+        // Force regeneration of maze
+        core.newMaze()
+        setNeedsDisplay()
+    }
+}
+
+#else
+
+import ScreenSaver
+
+class MazieSaverView : ScreenSaverView
+{
+    var core = MazieSaverCore()
+    
+    override init?(frame: CGRect, isPreview: Bool)
+    {
+        super.init(frame: frame, isPreview: isPreview)
+        self.animationTimeInterval = 3.0
+    }
+    
+    required init?(coder: NSCoder)
+    {
+        super.init(coder: coder)
+        self.animationTimeInterval = 3.0
+        //fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func draw(_ rect: NSRect)
+    {
+        let context: CGContext = NSGraphicsContext.current!.cgContext
+        core.draw( rect, context )
+    }
+    
+    override func animateOneFrame()
+    {
+        newMaze()
+        needsDisplay = true
+    }
+    
+    func newMaze()
+    {
+        // Force regeneration of maze
+        core.newMaze()
+        needsDisplay = true;
+    }
+}
+
+#endif
+
+

@@ -7,10 +7,10 @@
 //
 
 #if os(iOS)
-import UIKit
-import CoreGraphics
+    import UIKit
+    import CoreGraphics
 #else
-import Cocoa
+    import Cocoa
 #endif
 
 protocol TileRenderer

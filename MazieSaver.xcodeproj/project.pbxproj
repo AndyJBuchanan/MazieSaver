@@ -21,6 +21,9 @@
 		0646DA73222309900008B37C /* BoxesSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE481BC3303A00D4822D /* BoxesSolver.swift */; };
 		0646DA74222309990008B37C /* TileSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE501BC3336B00D4822D /* TileSet.swift */; };
 		0646DA752223099F0008B37C /* BasicTileRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE521BC3339F00D4822D /* BasicTileRenderer.swift */; };
+		0646DA772223478E0008B37C /* CGColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646DA762223478E0008B37C /* CGColor+extension.swift */; };
+		0646DA782223478E0008B37C /* CGColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646DA762223478E0008B37C /* CGColor+extension.swift */; };
+		0646DA792223478E0008B37C /* CGColor+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646DA762223478E0008B37C /* CGColor+extension.swift */; };
 		0681AE3E1BC32F0000D4822D /* MazieSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE3D1BC32F0000D4822D /* MazieSaverView.swift */; };
 		0681AE401BC32F2600D4822D /* CGRect+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE3F1BC32F2600D4822D /* CGRect+extension.swift */; };
 		0681AE431BC32F3700D4822D /* shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE411BC32F3700D4822D /* shuffle.swift */; };
@@ -53,6 +56,7 @@
 		0646DA642223094C0008B37C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0646DA672223094C0008B37C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0646DA692223094C0008B37C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0646DA762223478E0008B37C /* CGColor+extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "CGColor+extension.swift"; sourceTree = "<group>"; };
 		0681AE301BC32ED600D4822D /* MazieSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MazieSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		0681AE371BC32ED600D4822D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0681AE3D1BC32F0000D4822D /* MazieSaverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazieSaverView.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 			children = (
 				0681AE3D1BC32F0000D4822D /* MazieSaverView.swift */,
 				0681AE3F1BC32F2600D4822D /* CGRect+extension.swift */,
+				0646DA762223478E0008B37C /* CGColor+extension.swift */,
 				0681AE411BC32F3700D4822D /* shuffle.swift */,
 				0681AE421BC32F3700D4822D /* random.swift */,
 				0681AE451BC32FFC00D4822D /* Maze.swift */,
@@ -325,6 +330,7 @@
 				0646DA722223098B0008B37C /* BruteForceSolver.swift in Sources */,
 				0646DA6D2223097C0008B37C /* MazieSaverView.swift in Sources */,
 				0646DA71222309880008B37C /* Maze.swift in Sources */,
+				0646DA792223478E0008B37C /* CGColor+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -341,6 +347,7 @@
 				0681AE4A1BC3303A00D4822D /* BoxesSolver.swift in Sources */,
 				0681AE461BC32FFC00D4822D /* Maze.swift in Sources */,
 				0681AE491BC3303A00D4822D /* BruteForceSolver.swift in Sources */,
+				0646DA772223478E0008B37C /* CGColor+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -359,6 +366,7 @@
 				0681AE7E1BC3388D00D4822D /* BruteForceSolver.swift in Sources */,
 				0681AE791BC3388D00D4822D /* MazieSaverView.swift in Sources */,
 				0681AE7D1BC3388D00D4822D /* Maze.swift in Sources */,
+				0646DA782223478E0008B37C /* CGColor+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

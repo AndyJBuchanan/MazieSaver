@@ -7,10 +7,10 @@
 //
 
 #if os(iOS)
-import UIKit
-import CoreGraphics
+    import UIKit
+    import CoreGraphics
 #else
-import Cocoa
+    import Cocoa
 #endif
 
 class BasicTileRenderer : TileRenderer
@@ -100,15 +100,15 @@ class BasicTileRenderer : TileRenderer
     // Local
     var dirty = true
     
-    var backgroundColour = CGColor.white
+    var backgroundColour = CGColor.getWhite()
     
-    var wallColour = CGColor.black
-    var cellColour = CGColor.white
+    var wallColour = CGColor.getBlack()
+    var cellColour = CGColor.getWhite()
     
-    var solutionColour = CGColor.black
-    var visitiedColour = CGColor.white
+    var solutionColour = CGColor.getBlack()
+    var visitiedColour = CGColor.getWhite()
     
-    var orphanedColour = CGColor.black
+    var orphanedColour = CGColor.getBlack()
 
     var tileSize: CGSize?
     var tileWallWidth: CGFloat = 0.0
@@ -141,7 +141,7 @@ class BasicTileRenderer : TileRenderer
             tilesSolution = TileSet()
             _ = tilesSolution?.buildTilesWith(self, finalWidth: width, finalHeight: height, renderedWidth: 128, renderedHeight: 128, wallWidth: CGFloat(wallWidth), backColour: backgroundColour, cellColour: solutionColour, wallColour: wallColour)
 
-            let clearColour = CGColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+            let clearColour = CGColor.from_RGBA(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
             
             tilesVisitedOverlay = TileSet()
             _ = tilesVisitedOverlay?.buildTilesWith(self, finalWidth: width, finalHeight: height, renderedWidth: 128, renderedHeight: 128, wallWidth: CGFloat(wallWidth), backColour: clearColour, cellColour: visitiedColour, wallColour: clearColour)
@@ -258,7 +258,7 @@ class BasicTileRenderer : TileRenderer
         let useSolvedColour = solvedCellColour ?? cellColour
         let useVisitedColour = visitedCellColour ?? cellColour
         
-        let clearColour = CGColor(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
+        let clearColour = CGColor.from_RGBA(red: 0.0, green: 0.0, blue: 0.0, alpha: 0.0)
 
         for y in 0..<maze.gridH
         {
