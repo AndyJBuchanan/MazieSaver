@@ -7,6 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0646DA5E2223094B0008B37C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646DA5D2223094B0008B37C /* AppDelegate.swift */; };
+		0646DA602223094B0008B37C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0646DA5F2223094B0008B37C /* ViewController.swift */; };
+		0646DA632223094B0008B37C /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0646DA612223094B0008B37C /* Main.storyboard */; };
+		0646DA652223094C0008B37C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0646DA642223094C0008B37C /* Assets.xcassets */; };
+		0646DA682223094C0008B37C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0646DA662223094C0008B37C /* LaunchScreen.storyboard */; };
+		0646DA6D2223097C0008B37C /* MazieSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE3D1BC32F0000D4822D /* MazieSaverView.swift */; };
+		0646DA6E2223097F0008B37C /* CGRect+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE3F1BC32F2600D4822D /* CGRect+extension.swift */; };
+		0646DA6F222309820008B37C /* shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE411BC32F3700D4822D /* shuffle.swift */; };
+		0646DA70222309850008B37C /* random.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE421BC32F3700D4822D /* random.swift */; };
+		0646DA71222309880008B37C /* Maze.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE451BC32FFC00D4822D /* Maze.swift */; };
+		0646DA722223098B0008B37C /* BruteForceSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE471BC3303A00D4822D /* BruteForceSolver.swift */; };
+		0646DA73222309900008B37C /* BoxesSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE481BC3303A00D4822D /* BoxesSolver.swift */; };
+		0646DA74222309990008B37C /* TileSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE501BC3336B00D4822D /* TileSet.swift */; };
+		0646DA752223099F0008B37C /* BasicTileRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE521BC3339F00D4822D /* BasicTileRenderer.swift */; };
 		0681AE3E1BC32F0000D4822D /* MazieSaverView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE3D1BC32F0000D4822D /* MazieSaverView.swift */; };
 		0681AE401BC32F2600D4822D /* CGRect+extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE3F1BC32F2600D4822D /* CGRect+extension.swift */; };
 		0681AE431BC32F3700D4822D /* shuffle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE411BC32F3700D4822D /* shuffle.swift */; };
@@ -32,6 +46,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0646DA5B2223094B0008B37C /* MazieIOS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MazieIOS.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		0646DA5D2223094B0008B37C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		0646DA5F2223094B0008B37C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0646DA622223094B0008B37C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		0646DA642223094C0008B37C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		0646DA672223094C0008B37C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		0646DA692223094C0008B37C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0681AE301BC32ED600D4822D /* MazieSaver.saver */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MazieSaver.saver; sourceTree = BUILT_PRODUCTS_DIR; };
 		0681AE371BC32ED600D4822D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0681AE3D1BC32F0000D4822D /* MazieSaverView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MazieSaverView.swift; sourceTree = "<group>"; };
@@ -52,6 +73,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		0646DA582223094B0008B37C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0681AE2C1BC32ED600D4822D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -69,12 +97,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0646DA5C2223094B0008B37C /* MazieIOS */ = {
+			isa = PBXGroup;
+			children = (
+				0646DA5D2223094B0008B37C /* AppDelegate.swift */,
+				0646DA5F2223094B0008B37C /* ViewController.swift */,
+				0646DA612223094B0008B37C /* Main.storyboard */,
+				0646DA642223094C0008B37C /* Assets.xcassets */,
+				0646DA662223094C0008B37C /* LaunchScreen.storyboard */,
+				0646DA692223094C0008B37C /* Info.plist */,
+			);
+			path = MazieIOS;
+			sourceTree = "<group>";
+		};
 		0681AE261BC32ED600D4822D = {
 			isa = PBXGroup;
 			children = (
 				0681AE4B1BC3305000D4822D /* Shared */,
 				0681AE321BC32ED600D4822D /* MazieSaver */,
 				0681AE6B1BC3385C00D4822D /* MazieSaverTest */,
+				0646DA5C2223094B0008B37C /* MazieIOS */,
 				0681AE311BC32ED600D4822D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -84,6 +126,7 @@
 			children = (
 				0681AE301BC32ED600D4822D /* MazieSaver.saver */,
 				0681AE6A1BC3385C00D4822D /* MazieSaverTest.app */,
+				0646DA5B2223094B0008B37C /* MazieIOS.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -137,6 +180,23 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
+		0646DA5A2223094B0008B37C /* MazieIOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 0646DA6A2223094C0008B37C /* Build configuration list for PBXNativeTarget "MazieIOS" */;
+			buildPhases = (
+				0646DA572223094B0008B37C /* Sources */,
+				0646DA582223094B0008B37C /* Frameworks */,
+				0646DA592223094B0008B37C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MazieIOS;
+			productName = MazieIOS;
+			productReference = 0646DA5B2223094B0008B37C /* MazieIOS.app */;
+			productType = "com.apple.product-type.application";
+		};
 		0681AE2F1BC32ED600D4822D /* MazieSaver */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0681AE3A1BC32ED600D4822D /* Build configuration list for PBXNativeTarget "MazieSaver" */;
@@ -178,10 +238,15 @@
 		0681AE271BC32ED600D4822D /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0700;
+				LastSwiftUpdateCheck = 1010;
 				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "Andy Buchanan";
 				TargetAttributes = {
+					0646DA5A2223094B0008B37C = {
+						CreatedOnToolsVersion = 10.1;
+						DevelopmentTeam = 729JFYTH57;
+						ProvisioningStyle = Automatic;
+					};
 					0681AE2F1BC32ED600D4822D = {
 						CreatedOnToolsVersion = 7.0.1;
 						DevelopmentTeam = 729JFYTH57;
@@ -210,11 +275,22 @@
 			targets = (
 				0681AE2F1BC32ED600D4822D /* MazieSaver */,
 				0681AE691BC3385C00D4822D /* MazieSaverTest */,
+				0646DA5A2223094B0008B37C /* MazieIOS */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		0646DA592223094B0008B37C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0646DA682223094C0008B37C /* LaunchScreen.storyboard in Resources */,
+				0646DA652223094C0008B37C /* Assets.xcassets in Resources */,
+				0646DA632223094B0008B37C /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0681AE2E1BC32ED600D4822D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -234,6 +310,24 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		0646DA572223094B0008B37C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0646DA70222309850008B37C /* random.swift in Sources */,
+				0646DA73222309900008B37C /* BoxesSolver.swift in Sources */,
+				0646DA752223099F0008B37C /* BasicTileRenderer.swift in Sources */,
+				0646DA602223094B0008B37C /* ViewController.swift in Sources */,
+				0646DA6F222309820008B37C /* shuffle.swift in Sources */,
+				0646DA74222309990008B37C /* TileSet.swift in Sources */,
+				0646DA6E2223097F0008B37C /* CGRect+extension.swift in Sources */,
+				0646DA5E2223094B0008B37C /* AppDelegate.swift in Sources */,
+				0646DA722223098B0008B37C /* BruteForceSolver.swift in Sources */,
+				0646DA6D2223097C0008B37C /* MazieSaverView.swift in Sources */,
+				0646DA71222309880008B37C /* Maze.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		0681AE2B1BC32ED600D4822D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -271,6 +365,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		0646DA612223094B0008B37C /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0646DA622223094B0008B37C /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		0646DA662223094C0008B37C /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0646DA672223094C0008B37C /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		0681AE721BC3385C00D4822D /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -282,6 +392,63 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		0646DA6B2223094C0008B37C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 729JFYTH57;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MazieIOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.globbits.MazieIOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		0646DA6C2223094C0008B37C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 729JFYTH57;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				INFOPLIST_FILE = MazieIOS/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = uk.co.globbits.MazieIOS;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 4.2;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
 		0681AE381BC32ED600D4822D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -464,6 +631,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		0646DA6A2223094C0008B37C /* Build configuration list for PBXNativeTarget "MazieIOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				0646DA6B2223094C0008B37C /* Debug */,
+				0646DA6C2223094C0008B37C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		0681AE2A1BC32ED600D4822D /* Build configuration list for PBXProject "MazieSaver" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
