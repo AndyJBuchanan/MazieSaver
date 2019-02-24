@@ -6,7 +6,12 @@
 //  Copyright © 2015 Andy Buchanan. All rights reserved.
 //
 
+#if os(iOS)
+import UIKit
+import CoreGraphics
+#else
 import Cocoa
+#endif
 
 protocol TileRenderer
 {

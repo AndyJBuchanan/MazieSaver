@@ -12,8 +12,13 @@
 
 import Foundation
 
+#if os(iOS)
+import UIKit
+import CoreGraphics
+#else
 import Cocoa
 import ScreenSaver
+#endif
 
 class MazieSaverView : ScreenSaverView
 {

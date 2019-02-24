@@ -6,7 +6,13 @@
 //  Copyright © 2015 Andy Buchanan. All rights reserved.
 //
 
-import Foundation
+#if os(iOS)
+import UIKit
+import CoreGraphics
+#else
+import Cocoa
+import ScreenSaver
+#endif
 
 extension Int
 {
@@ -58,10 +64,27 @@ extension Float
 
 extension CGColor
 {
+    // todo: move to own file
+    static func fromRGBA( red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat ) -> CGColor
+    {
+        #if os(iOS)
+            let col = UIColor( red: red, green: green, blue: blue, alpha: alpha )
+            return col.cgColor
+        #else
+            let col = CGColor( red: red, green: green, blue: blue, alpha: alpha )
+            return col
+        #endif
+    }
+    
     static func randomColourOpaque() -> CGColor
     {
-        let col = CGColor(red: CGFloat.random(), green: CGFloat.random(), blue: CGFloat.random(), alpha: 1.0 )
-        return col
+        #if os(iOS)
+            let col = UIColor( red: CGFloat.random(), green: CGFloat.random(), blue: CGFloat.random(), alpha: 1.0 )
+            return col.cgColor
+        #else
+            let col = CGColor( red: CGFloat.random(), green: CGFloat.random(), blue: CGFloat.random(), alpha: 1.0 )
+            return col
+        #endif
     }
 }
 
