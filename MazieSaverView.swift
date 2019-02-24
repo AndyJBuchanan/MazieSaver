@@ -8,6 +8,8 @@
 
 // Note! Screen Savers are stored in '~/Library/Screen Savers'
 
+// todo: draw maze, then solution, then new maze?
+
 import Foundation
 
 import Cocoa
@@ -70,6 +72,7 @@ class MazieSaverView : ScreenSaverView
 
     var renderer: BasicTileRenderer?
     
+    // Note: The Tile renderer is significantly quicker, try to always use it!
     var tiledRender = true
     
     fileprivate func DrawMaze( _ context: CGContext, rect: CGRect )
