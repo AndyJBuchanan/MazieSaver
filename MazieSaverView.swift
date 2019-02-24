@@ -20,6 +20,106 @@ import Foundation
     import ScreenSaver
 #endif
 
+#if os(iOS)
+
+import UIKit
+
+class MazieSaverView : UIView
+{
+    var core: MazieSaverCore?
+    
+    override init(frame: CGRect)
+    {
+        super.init(frame: frame)
+        
+        core = MazieSaverCore()
+        
+        let animationTimeInterval = TimeInterval(3)
+        Timer.scheduledTimer( timeInterval: animationTimeInterval, target: self, selector:  #selector(animateOneFrame), userInfo: nil, repeats: true )
+    }
+    
+    required init?(coder: NSCoder)
+    {
+        //fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        
+        core = MazieSaverCore()
+        
+        let animationTimeInterval = TimeInterval(3)
+        Timer.scheduledTimer( timeInterval: animationTimeInterval, target: self, selector:  #selector(animateOneFrame), userInfo: nil, repeats: true )
+    }
+    
+    override func draw(_ rect: CGRect)
+    {
+        if let context = UIGraphicsGetCurrentContext()
+        {
+            core?.draw(rect, context)
+        }
+    }
+    
+    @objc func animateOneFrame()
+    {
+        newMaze()
+        setNeedsDisplay()
+    }
+    
+    func newMaze()
+    {
+        // Force regeneration of maze
+        core?.newMaze()
+        setNeedsDisplay()
+    }
+}
+
+#else
+
+import ScreenSaver
+
+class MazieSaverView : ScreenSaverView
+{
+    var core: MazieSaverCore?
+    
+    override init?(frame: CGRect, isPreview: Bool)
+    {
+        super.init(frame: frame, isPreview: isPreview)
+        self.animationTimeInterval = 3.0
+        
+        core = MazieSaverCore()
+    }
+    
+    required init?(coder: NSCoder)
+    {
+        super.init(coder: coder)
+        self.animationTimeInterval = 3.0
+        //fatalError("init(coder:) has not been implemented")
+        
+        core = MazieSaverCore()
+    }
+    
+    override func draw(_ rect: NSRect)
+    {
+        let context: CGContext = NSGraphicsContext.current!.cgContext
+        core?.draw( rect, context )
+    }
+    
+    override func animateOneFrame()
+    {
+        newMaze()
+        needsDisplay = true
+    }
+    
+    func newMaze()
+    {
+        // Force regeneration of maze
+        core?.newMaze()
+        needsDisplay = true;
+    }
+}
+
+#endif
+
+
+
 class MazieSaverCore
 {
     var renderer: BasicTileRenderer?
@@ -117,14 +217,14 @@ class MazieSaverCore
     
     func draw(_ rect: CGRect, _ context: CGContext)
     {
-        DEBUG_ShowSomething(context, rect: rect)
+//        DEBUG_ShowSomething(context, rect: rect)
         
         if ( renderer==nil )
         {
             renderer = BasicTileRenderer()
         }
         
-        DEBUG_ShowTiles(context, rect: rect)
+//        DEBUG_ShowTiles(context, rect: rect)
         
         DrawMaze(context, rect: rect)
     }
@@ -137,94 +237,5 @@ class MazieSaverCore
 }
 
 
-#if os(iOS)
-
-import UIKit
-
-class MazieSaverView : UIView
-{
-    var core = MazieSaverCore()
-    
-    override init(frame: CGRect)
-    {
-        super.init(frame: frame)
-        
-        let animationTimeInterval = TimeInterval(3)
-        Timer.scheduledTimer( timeInterval: animationTimeInterval, target: self, selector:  #selector(animateOneFrame), userInfo: nil, repeats: true )
-    }
-    
-    required init?(coder: NSCoder)
-    {
-        //fatalError("init(coder:) has not been implemented")
-        super.init(coder: coder)
-
-        let animationTimeInterval = TimeInterval(3)
-        Timer.scheduledTimer( timeInterval: animationTimeInterval, target: self, selector:  #selector(animateOneFrame), userInfo: nil, repeats: true )
-    }
-    
-    override func draw(_ rect: CGRect)
-    {
-        if let context = UIGraphicsGetCurrentContext()
-        {
-            core.draw(rect, context)
-        }
-    }
-    
-    @objc func animateOneFrame()
-    {
-        newMaze()
-        setNeedsDisplay()
-    }
-    
-    func newMaze()
-    {
-        // Force regeneration of maze
-        core.newMaze()
-        setNeedsDisplay()
-    }
-}
-
-#else
-
-import ScreenSaver
-
-class MazieSaverView : ScreenSaverView
-{
-    var core = MazieSaverCore()
-    
-    override init?(frame: CGRect, isPreview: Bool)
-    {
-        super.init(frame: frame, isPreview: isPreview)
-        self.animationTimeInterval = 3.0
-    }
-    
-    required init?(coder: NSCoder)
-    {
-        super.init(coder: coder)
-        self.animationTimeInterval = 3.0
-        //fatalError("init(coder:) has not been implemented")
-    }
-    
-    override func draw(_ rect: NSRect)
-    {
-        let context: CGContext = NSGraphicsContext.current!.cgContext
-        core.draw( rect, context )
-    }
-    
-    override func animateOneFrame()
-    {
-        newMaze()
-        needsDisplay = true
-    }
-    
-    func newMaze()
-    {
-        // Force regeneration of maze
-        core.newMaze()
-        needsDisplay = true;
-    }
-}
-
-#endif
 
 
