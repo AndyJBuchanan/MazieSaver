@@ -198,12 +198,11 @@ class Maze
     
     fileprivate func hasUnconnectedNeighbours( _ x: Int, _ y: Int ) -> Bool
     {
-        var score = 0
-        if ( x > 0 ){ score += scores[y][x-1] }
-        if ( x < (gridW-1) ){ score += scores[y][x+1] }
-        if ( y > 0 ){ score += scores[y-1][x] }
-        if ( y < (gridH-1) ){ score += scores[y+1][x] }
-        return score != 0
+        if ( x > 0 ){ if (scores[y][x-1]==0) {return true}}
+        if ( x < (gridW-1) ){ if (scores[y][x+1]==0) {return true}}
+        if ( y > 0 ){ if ( scores[y-1][x]==0) {return true}}
+        if ( y < (gridH-1) ){ if (scores[y+1][x]==0) {return true}}
+        return false
     }
     
     typealias ScoreStackEntry = (x:Int, y:Int, score:Int, exit:Bool)
@@ -238,7 +237,7 @@ class Maze
             }
         }
         
-        var cell = grid[ y ][ x ];
+        let cell = grid[ y ][ x ];
         if ( cell.left ){ recursiveScore( x-1, y, score: score+1, scoreStack: &scoreStack ) }
         if ( cell.right ){ recursiveScore( x+1, y, score: score+1, scoreStack: &scoreStack ) }
         if ( cell.top ){ recursiveScore( x, y-1, score: score+1, scoreStack: &scoreStack ) }

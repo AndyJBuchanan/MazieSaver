@@ -25,7 +25,7 @@ extension Maze
                 return true;
             }
             
-            var cell = grid[ y ][ x ]
+            let cell = grid[ y ][ x ]
             if ( cell.left ){ if ( recursiveSolve( x-1, y ) ) { solution[ y ][ x ] = 2; return true; } }
             if ( cell.right ){ if ( recursiveSolve( x+1, y ) ) { solution[ y ][ x ] = 2; return true; } }
             if ( cell.top ){ if ( recursiveSolve( x, y-1 ) ) { solution[ y ][ x ] = 2; return true; } }
@@ -85,7 +85,7 @@ extension Maze
                     return true;
                 }
                 
-                var cell = grid[ y ][ x ]
+                let cell = grid[ y ][ x ]
                 
                 if ( cell.left && ( x>0 ) && ( solution[y][x-1]==0 ) )
                 {
