@@ -47,7 +47,7 @@ extension Maze
     // With a manual stack. A bit more tortuous, but should avoid running out of space
     final func BruteForceSolve2() -> Bool
     {
-        typealias stackEntry = (x:Int,x:Int)
+        typealias stackEntry = (x:Int,y:Int)
         var stack:[stackEntry] = []
         
         func solve( _ x: Int, _ y: Int ) -> Bool

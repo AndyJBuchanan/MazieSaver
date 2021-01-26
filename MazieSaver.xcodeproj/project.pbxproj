@@ -249,12 +249,12 @@
 				TargetAttributes = {
 					0646DA5A2223094B0008B37C = {
 						CreatedOnToolsVersion = 10.1;
-						DevelopmentTeam = 729JFYTH57;
+						DevelopmentTeam = 33532P687Y;
 						ProvisioningStyle = Automatic;
 					};
 					0681AE2F1BC32ED600D4822D = {
 						CreatedOnToolsVersion = 7.0.1;
-						DevelopmentTeam = 729JFYTH57;
+						DevelopmentTeam = 33532P687Y;
 						ProvisioningStyle = Automatic;
 					};
 					0681AE691BC3385C00D4822D = {
@@ -270,6 +270,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 				Base,
 			);
@@ -412,7 +413,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 729JFYTH57;
+				DEVELOPMENT_TEAM = 33532P687Y;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MazieIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -441,7 +442,7 @@
 				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 729JFYTH57;
+				DEVELOPMENT_TEAM = 33532P687Y;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				INFOPLIST_FILE = MazieIOS/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
@@ -562,7 +563,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 729JFYTH57;
+				DEVELOPMENT_TEAM = 33532P687Y;
 				INFOPLIST_FILE = MazieSaver/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
@@ -583,7 +584,7 @@
 				CODE_SIGN_IDENTITY = "Mac Developer";
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				DEVELOPMENT_TEAM = 729JFYTH57;
+				DEVELOPMENT_TEAM = 33532P687Y;
 				INFOPLIST_FILE = MazieSaver/Info.plist;
 				INSTALL_PATH = "$(HOME)/Library/Screen Savers";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
