@@ -46,6 +46,9 @@
 		0681AE7F1BC3388D00D4822D /* BoxesSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE481BC3303A00D4822D /* BoxesSolver.swift */; };
 		0681AE801BC3388D00D4822D /* TileSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE501BC3336B00D4822D /* TileSet.swift */; };
 		0681AE811BC3388D00D4822D /* BasicTileRenderer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0681AE521BC3339F00D4822D /* BasicTileRenderer.swift */; };
+		D767DD332A275FEB0084BE96 /* FillSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D767DD322A275FEB0084BE96 /* FillSolver.swift */; };
+		D767DD342A275FEB0084BE96 /* FillSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D767DD322A275FEB0084BE96 /* FillSolver.swift */; };
+		D767DD352A275FEB0084BE96 /* FillSolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = D767DD322A275FEB0084BE96 /* FillSolver.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -74,6 +77,7 @@
 		0681AE701BC3385C00D4822D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0681AE731BC3385C00D4822D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0681AE751BC3385C00D4822D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D767DD322A275FEB0084BE96 /* FillSolver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FillSolver.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -156,6 +160,7 @@
 				0681AE481BC3303A00D4822D /* BoxesSolver.swift */,
 				0681AE501BC3336B00D4822D /* TileSet.swift */,
 				0681AE521BC3339F00D4822D /* BasicTileRenderer.swift */,
+				D767DD322A275FEB0084BE96 /* FillSolver.swift */,
 			);
 			name = Shared;
 			sourceTree = "<group>";
@@ -323,6 +328,7 @@
 			files = (
 				0646DA70222309850008B37C /* random.swift in Sources */,
 				0646DA73222309900008B37C /* BoxesSolver.swift in Sources */,
+				D767DD352A275FEB0084BE96 /* FillSolver.swift in Sources */,
 				0646DA752223099F0008B37C /* BasicTileRenderer.swift in Sources */,
 				0646DA602223094B0008B37C /* ViewController.swift in Sources */,
 				0646DA6F222309820008B37C /* shuffle.swift in Sources */,
@@ -349,6 +355,7 @@
 				0681AE4A1BC3303A00D4822D /* BoxesSolver.swift in Sources */,
 				0681AE461BC32FFC00D4822D /* Maze.swift in Sources */,
 				0681AE491BC3303A00D4822D /* BruteForceSolver.swift in Sources */,
+				D767DD332A275FEB0084BE96 /* FillSolver.swift in Sources */,
 				0646DA772223478E0008B37C /* CGColor+extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,6 +366,7 @@
 			files = (
 				0681AE7C1BC3388D00D4822D /* random.swift in Sources */,
 				0681AE7F1BC3388D00D4822D /* BoxesSolver.swift in Sources */,
+				D767DD342A275FEB0084BE96 /* FillSolver.swift in Sources */,
 				0681AE811BC3388D00D4822D /* BasicTileRenderer.swift in Sources */,
 				0681AE6F1BC3385C00D4822D /* ViewController.swift in Sources */,
 				0681AE7B1BC3388D00D4822D /* shuffle.swift in Sources */,

@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<VariablesViewState
+   version = "1.0">
+   <ContextStates>
+      <ContextState
+         contextName = "Maze.FillSolve():FillSolver.swift">
+      </ContextState>
+      <ContextState
+         contextName = "Maze.LowestScoredNeighbour(_:_:):FillSolver.swift">
+         <PersistentStrings>
+            <PersistentString
+               value = "grid[y][x]">
+            </PersistentString>
+            <PersistentString
+               value = "scores[y+1][x]">
+            </PersistentString>
+            <PersistentString
+               value = "scores[y][x-1]">
+            </PersistentString>
+         </PersistentStrings>
+      </ContextState>
+   </ContextStates>
+</VariablesViewState>

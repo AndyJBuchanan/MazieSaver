@@ -191,8 +191,10 @@ class MazieSaverCore
             let ydim = Int( floor( rect.height / rdim ) )
             
             maze?.generateMaze(w: xdim, h: ydim)
-            _ = maze?.BruteForceSolve2()
-            //maze?.BoxSolve()
+//            _ = maze?.BruteForceSolve2()
+            _ = maze?.FillSolve()
+            //_ = maze?.BruteForceSolve2()
+            //_ = maze?.BoxSolve()
             //maze?.printMazeToTTY()
             
             // Some random colours too!

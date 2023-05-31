@@ -57,4 +57,5 @@ extension Maze
 
 // No refine step yet, no point whilst the core performance is still so bad
 
+// todo: finish code. ( grid -> solution )
 

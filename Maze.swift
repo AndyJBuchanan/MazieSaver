@@ -78,9 +78,9 @@ enum NavigationDirection : UInt8
 
 class Maze
 {
-    var grid: [[Cell]] = []
-    var scores: [[Int]] = []
-    var solution: [[Int]] = []
+    var grid: [[Cell]] = []                     // Connectivity
+    var scores: [[Int]] = []                    // distance
+    var solution: [[Int]] = []                  // 0=empty, 1=visited, 2=solution
     
     var gridW = 0
     var gridH = 0
